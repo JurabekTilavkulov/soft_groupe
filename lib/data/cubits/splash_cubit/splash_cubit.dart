@@ -8,7 +8,7 @@ class SplashCubit extends Cubit<SplashState>{
   SplashCubit():super(SplashLoadedInitialState());
 
 
-    fuksiya(){
+    funksiya(){
 
       Future.delayed(Duration(seconds:5),(){
         emit(SplashLoadedSucsesState());
