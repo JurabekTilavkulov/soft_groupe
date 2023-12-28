@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,19 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case "/":
+            return CupertinoPageRoute(
+              builder: (context) => SplashPage(),
+            );
+          case "/pageView":
+            return CupertinoPageRoute(
+              builder: (context) => PageView(),
+            );
+        }
+      },
     );
   }
 }
