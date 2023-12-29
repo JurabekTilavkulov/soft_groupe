@@ -18,4 +18,15 @@ class SplashCubit extends Cubit<SplashState>{
 
     }
 
+  void onbording(){
+
+
+    print(state);
+    Future.delayed(Duration(seconds:3),(){
+      emit(SplashProgres());
+    });
+    print(state);
+    emit(SplashEnd());
+  }
+
 }
