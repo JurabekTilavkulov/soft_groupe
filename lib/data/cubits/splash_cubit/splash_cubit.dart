@@ -5,17 +5,17 @@ import 'package:soft_groupe/data/cubits/splash_cubit/splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState>{
 
-  SplashCubit():super(SplashLoadedInitialState());
+  SplashCubit():super(SplashInitial());
 
 
-    funksiya(){
+   void funksiya(){
 
-      Future.delayed(Duration(seconds:5),(){
-        emit(SplashLoadedSucsesState());
+       print(state);
+       Future.delayed(Duration(seconds:5),(){
+        emit(SplashEnd());
       });
+       print(state);
 
     }
-
-
 
 }

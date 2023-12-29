@@ -8,18 +8,18 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create:(context)=>SplashCubit(),
-    child: BlocListener(
-      listener: (context,state){
-       if(state==SplashLoadedSucsesState){
+    return BlocListener<SplashCubit,SplashState>(
+      bloc: context.read<SplashCubit>()..funksiya(),
+       listener: (context,state){
+       if(state is SplashEnd){
           Navigator.pushReplacementNamed(context,'/pageView');
        }
       },
      child: Scaffold(
        body:Center(
-         child: Image.asset('assets/bosh.png'),
+         child: Image.asset('assets/0splash_page/bosh.png'),
        ),
      ),
-    ),);
+    );
   }
 }

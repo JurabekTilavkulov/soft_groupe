@@ -1,7 +1,7 @@
 
 
-abstract class SplashState{}
-class SplashLoadedInitialState extends SplashState{}
-class SplashLoadedPrograseState extends SplashState{}
-class SplashLoadedSucsesState extends SplashState{}
+sealed class SplashState {}
 
+class SplashInitial extends SplashState {}
+
+class SplashEnd extends SplashState {}
