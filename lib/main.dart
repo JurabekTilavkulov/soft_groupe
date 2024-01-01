@@ -5,6 +5,8 @@ import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
 import 'package:soft_groupe/ui/pages/2_login_page/login_page.dart';
 import 'package:soft_groupe/ui/pages/3_register_page/register_page.dart';
+import 'package:soft_groupe/ui/pages/4_verification_page/verification_page.dart';
+import 'package:soft_groupe/ui/pages/forgot_password_page/forgot_page.dart';
 import 'package:soft_groupe/ui/pages/onbording/page_view.dart';
 
 void main() {
@@ -48,6 +50,14 @@ class MyApp extends StatelessWidget {
               case "/registerPage":
                 return CupertinoPageRoute(
                   builder: (context) => RegisterPage(),
+                );
+              case "/forgotPage":
+                return CupertinoPageRoute(
+                  builder: (context) => ForgotPage(),
+                );
+              case "/vertificationPage":
+                return CupertinoPageRoute(
+                  builder: (context) => VertificationPage(),
                 );
             }
           },

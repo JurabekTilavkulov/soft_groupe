@@ -178,7 +178,7 @@ class LoginPage extends StatelessWidget {
                   color: Colors.white,
                   onPressed: (){
                     if (_formKey.currentState!.validate() && _formKey1.currentState!.validate()) {
-                      //Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>HomePage()));
+                      Navigator.pushReplacementNamed(context,'/forgotPage');
                     }
                   },
                   padding: EdgeInsets.zero,
