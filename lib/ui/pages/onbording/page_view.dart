@@ -12,7 +12,7 @@ class Onbording extends StatelessWidget {
 
    // onbording
 
-   int count=0;
+
 
   PageController pageController=PageController();
   @override
@@ -38,7 +38,9 @@ class Onbording extends StatelessWidget {
           PageView(
             controller: pageController,
             onPageChanged: (index2){
-              count=index2;
+              state.count!=index2;
+              context.read<SplashCubit>().isShowCount(index2);
+
             },
             children: [
               Container(
@@ -96,29 +98,20 @@ class Onbording extends StatelessWidget {
           ),
 
 
-         Positioned(
+
+     Positioned(
               top:745,
               left:24,
               child:Row(
                 children: [
                   DotsIndicator(
-                    onTap: (index){
-                      count=index;
-                      pageController.jumpToPage(index);
-                    },
                     decorator: DotsDecorator(
                       activeColor: Colors.blue,
                     ),
-                    dotsCount: 3,
-                    position: count,
+                    dotsCount:3,
+                    position:state.count
                   ),
-
-
-
-                if(count==0) SizedBox(width:200,),
-                  if(count==1) SizedBox(width:40,),
-
-                 MaterialButton(
+                  MaterialButton(
                    padding: EdgeInsets.zero,
                    shape:RoundedRectangleBorder(
                      borderRadius: BorderRadius.circular(6)

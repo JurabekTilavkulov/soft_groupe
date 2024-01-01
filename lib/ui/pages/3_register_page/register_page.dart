@@ -230,12 +230,20 @@ class RegisterPage extends StatelessWidget {
                             return null;
 
                           },
-                          //obscureText:a,
+                          obscureText:state.isEyeShow ?? false,
                           decoration:InputDecoration(
                             hintText: 'Password',
                             border:OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)
                             ),
+                              suffixIcon:IconButton(
+                                onPressed:(){
+                                  context.read<SplashCubit>().isShowPassword((state.isEyeShow??false));
+                                },
+                                icon: Icon((state.isEyeShow ?? false)
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                              )
                           ),
                         )
                       ],
@@ -246,11 +254,12 @@ class RegisterPage extends StatelessWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.zero,
-                      child: Checkbox(value:true,
+                      child: Checkbox(value:state.chekBox??false,
                           activeColor: Colors.blue,
                           tristate: true,
                           onChanged:(d){
-
+                            context.read<SplashCubit>().isShowChekbox(state.chekBox??false);
+                            d=state.chekBox;
                           }),
                     ),
                     Text('Remember me',style: TextStyle(color: Color(0xFF4E4B66),),),

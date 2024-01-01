@@ -8,7 +8,7 @@ enum Status{initial,loding, loaded,error}
 
 class SplashCubit extends Cubit<SplashState>{
 
-  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial));
+  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false));
 
 
   void funksiya()async {
@@ -20,9 +20,9 @@ class SplashCubit extends Cubit<SplashState>{
 
   void onbording()async{
 
-    print(state.status);
+    print(state);
     emit(state.copyWith(status:Status.loding));
-    print(state.status);
+    print(state);
     await Future.delayed(Duration(seconds:3),(){
       emit(state.copyWith(status:Status.loaded));
        print(state);
@@ -33,6 +33,16 @@ class SplashCubit extends Cubit<SplashState>{
   void isShowPassword(bool isShow) async {
     print(isShow);
     emit(state.copyWith(isEyeShow:!isShow));
+  }
+
+  void isShowChekbox(bool chekBox1) async {
+    print(chekBox1);
+    emit(state.copyWith(chekBox:!chekBox1));
+  }
+
+  void isShowCount(int count) async {
+    print(count);
+    emit(state.copyWith(count:state.count));
   }
 
 
