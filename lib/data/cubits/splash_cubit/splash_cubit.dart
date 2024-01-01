@@ -8,22 +8,26 @@ class SplashCubit extends Cubit<SplashState>{
   SplashCubit():super(SplashInitial());
 
 
-   void funksiya(){
 
 
-       Future.delayed(Duration(seconds:5),(){
+   void funksiya()async {
+    await Future.delayed(Duration(seconds:5),(){
         emit(SplashEnd());
       });
 
     }
 
-  void onbording(){
+  void onbording()async{
 
     print(state);
-     Future.delayed(Duration(seconds:5),(){
+    emit(SplashProgres());
+    await Future.delayed(Duration(seconds:5),(){
        emit(SplashEnd());
+       print(state);
      });
-    print(state);
+
   }
+
+
 
 }

@@ -30,6 +30,7 @@ environment:
 dependencies:
   bloc:
   flutter_bloc:
+  dots_indicator:
   flutter:
     sdk: flutter
 

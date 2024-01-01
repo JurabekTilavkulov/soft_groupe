@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
+import 'package:soft_groupe/ui/pages/2_login_page/login_page.dart';
 import 'package:soft_groupe/ui/pages/onbording/page_view.dart';
 
 void main() {
@@ -38,6 +39,10 @@ class MyApp extends StatelessWidget {
               case "/pageView":
                 return CupertinoPageRoute(
                   builder: (context) => Onbording(),
+                );
+              case "/loginPage":
+                return CupertinoPageRoute(
+                  builder: (context) => LoginPage(),
                 );
             }
           },
