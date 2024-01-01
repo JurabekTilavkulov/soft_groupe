@@ -32,7 +32,7 @@ class VertificationPage extends StatelessWidget {
       return Container(
         child:PageView(
           controller:pageController,
-         physics:NeverScrollableScrollPhysics(),
+       //  physics:NeverScrollableScrollPhysics(),
           children: [
             Container(
               padding:EdgeInsets.only(left:24,right:24),
@@ -246,7 +246,59 @@ class VertificationPage extends StatelessWidget {
                   )
                 ],
               ),
-            )
+            ),
+            Container(
+
+              child:Column(
+
+                children: [
+                  SizedBox(
+                    height:150,
+                  ),
+                 Image.asset('assets/0splash_page/bosh.png'),
+                  Text(
+                    'Congratulations!',
+                    style: TextStyle(
+                      color: Color(0xFF4E4B66),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  Text(
+                    'Your account is ready to use',
+                    style: TextStyle(
+                      color: Color(0xFF4E4B66),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      height: 0,
+                      letterSpacing: -0.30,
+                    ),
+                  ),
+                  SizedBox(
+                    height:258,
+                  ),
+                  MaterialButton(
+                    padding:EdgeInsets.zero,
+                    shape:RoundedRectangleBorder(
+                        borderRadius:BorderRadius.circular(6)
+                    ),
+                    onPressed:(){
+                      Navigator.pushReplacementNamed(context, '/SelectCountryPage');
+                    },
+                    child: Container(
+                      width: 380,
+                      height: 50,
+                      decoration:BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius:BorderRadius.circular(6)
+                      ),
+                      child:Center(child:Text('Go to Homepage',style:TextStyle(color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,),),),
+                    ),)
+                ],
+              ),
+            ),
           ],
         ),
       );
