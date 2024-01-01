@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
-import 'package:soft_groupe/data/cubits/splash_cubit/splash_state.dart';
+
 
 class LoginPage extends StatelessWidget {
    LoginPage({Key? key}) : super(key: key);
@@ -21,10 +21,10 @@ class LoginPage extends StatelessWidget {
   }
 
   getBody(SplashState state, BuildContext context) {
-    if(state is SplashProgres){
+    if(state.status==Status.loding){
       return Center(child: CircularProgressIndicator(),);
     }
-    if(state is SplashEnd){
+    if(state.status==Status.loaded){
       return Container(
         padding: EdgeInsets.only(left:24,right: 24),
         child: ListView(
@@ -132,12 +132,20 @@ class LoginPage extends StatelessWidget {
                             return null;
 
                           },
-                          //obscureText:a,
+                          obscureText:state.isEyeShow ?? false,
                           decoration:InputDecoration(
                             hintText: 'Password',
                             border:OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)
                             ),
+                           suffixIcon:IconButton(
+                             onPressed:(){
+                               context.read<SplashCubit>().isShowPassword((state.isEyeShow??false));
+                             },
+                             icon: Icon((state.isEyeShow ?? false)
+                                 ? Icons.visibility
+                                 : Icons.visibility_off),
+                           )
                           ),
                         )
                       ],
@@ -202,7 +210,12 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                  Container(
+                  MaterialButton(onPressed:(){},
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6)
+                    ),
+                  child: Container(
                     width: 160,
                     height: 48,
                     decoration:BoxDecoration(
@@ -214,17 +227,23 @@ class LoginPage extends StatelessWidget {
                       child:Row(
                         children: [
                           Image.asset('assets/1pageviewpage/img_1.png',width: 24,
-                      height: 24,),
-                        SizedBox(
-                          width:10,
-                        ),
-                        Text('Facebook',style: TextStyle(color: Color(0xFF667080),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,),)
-                      ],),),
+                            height: 24,),
+                          SizedBox(
+                            width:10,
+                          ),
+                          Text('Facebook',style: TextStyle(color: Color(0xFF667080),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,),)
+                        ],),),
 
-                  ),
-                    Container(
+                  ),),
+
+                    MaterialButton(onPressed:(){},
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(6)
+                      ),
+                    child:Container(
                       width: 160,
                       height: 48,
                       decoration:BoxDecoration(
@@ -245,7 +264,8 @@ class LoginPage extends StatelessWidget {
                               fontWeight: FontWeight.w600,),)
                           ],),),
 
-                    )
+                    ),)
+
                   ],
                 ),
                 SizedBox(
@@ -256,7 +276,7 @@ class LoginPage extends StatelessWidget {
                    children: [
                      Text('don’t have an account ?',style: TextStyle(color: Color(0xFF667080)),),
                      TextButton(onPressed:(){
-
+                      Navigator.pushReplacementNamed(context,'/registerPage');
                      }, child:Text('Sign Up',style: TextStyle(color: Color(0xFF1877F2),fontWeight: FontWeight.w600,),))
                    ],
                  ),

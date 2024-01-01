@@ -5,7 +5,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
-import 'package:soft_groupe/data/cubits/splash_cubit/splash_state.dart';
+
 
 class Onbording extends StatelessWidget {
    Onbording({super.key});
@@ -29,10 +29,10 @@ class Onbording extends StatelessWidget {
   }
 
   getBody(SplashState state, BuildContext context,  ) {
-    if(state is SplashProgres){
+    if(state.status==Status.loding){
       return Center(child:CircularProgressIndicator(),);
     }
-    if(state is SplashEnd){
+    if(state.status==Status.loaded){
       return Stack(
         children: [
           PageView(

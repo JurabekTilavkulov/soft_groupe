@@ -1,10 +1,22 @@
+part of 'splash_cubit.dart';
 
+class SplashState {
+  final Status? status;
+  final bool? isEyeShow;
 
-sealed class SplashState {}
+  SplashState({
+    this.status,
+    this.isEyeShow = false,
+  });
 
-class SplashInitial extends SplashState {}
+  SplashState copyWith({
+    Status? status,
+    bool? isEyeShow,
+  }) {
+    return SplashState(
+      status: status ?? this.status,
+      isEyeShow: isEyeShow ?? this.isEyeShow,
+    );
+  }
 
-class SplashProgres extends SplashState{}
-
-class SplashEnd extends SplashState {}
-
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
-import 'package:soft_groupe/data/cubits/splash_cubit/splash_state.dart';
+
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class SplashPage extends StatelessWidget {
     return BlocListener<SplashCubit,SplashState>(
       bloc: context.read<SplashCubit>()..funksiya(),
        listener: (context,state){
-       if(state is SplashEnd){
+       if(state.status==Status.loaded){
           Navigator.pushReplacementNamed(context,'/pageView');
        }
       },
