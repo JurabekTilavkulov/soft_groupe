@@ -10,23 +10,20 @@ class SplashCubit extends Cubit<SplashState>{
 
    void funksiya(){
 
-       print(state);
+
        Future.delayed(Duration(seconds:5),(){
         emit(SplashEnd());
       });
-       print(state);
 
     }
 
   void onbording(){
 
-
     print(state);
-    Future.delayed(Duration(seconds:3),(){
-      emit(SplashProgres());
-    });
+     Future.delayed(Duration(seconds:5),(){
+       emit(SplashEnd());
+     });
     print(state);
-    emit(SplashEnd());
   }
 
 }
