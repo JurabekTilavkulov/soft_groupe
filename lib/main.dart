@@ -7,8 +7,11 @@ import 'package:soft_groupe/ui/pages/2_login_page/login_page.dart';
 import 'package:soft_groupe/ui/pages/3_register_page/register_page.dart';
 import 'package:soft_groupe/ui/pages/4_verification_page/verification_page.dart';
 import 'package:soft_groupe/ui/pages/5_select_country_page/select_country_page.dart';
+
+import 'package:soft_groupe/ui/pages/9_home_page/home_page.dart';
 import 'package:soft_groupe/ui/pages/forgot_password_page/forgot_page.dart';
 import 'package:soft_groupe/ui/pages/onbording/page_view.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +25,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(providers:[
 
       BlocProvider(create:(context)=>SplashCubit(),
-      )
+      ),
+
 
     ],
         child: MaterialApp(
@@ -34,7 +38,10 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           initialRoute: '/',
+          //initialRoute: '/HomePage',
+          routes: { '/HomePage':(context)=>HomePage()},
           onGenerateRoute: (settings) {
+
             switch (settings.name) {
               case "/":
                 return CupertinoPageRoute(
@@ -63,6 +70,10 @@ class MyApp extends StatelessWidget {
               case "/SelectCountryPage":
                 return CupertinoPageRoute(
                   builder: (context) => SelectCountryPage(),
+                );
+              case "/HomePage":
+                return CupertinoPageRoute(
+                  builder: (context) => HomePage(),
                 );
             }
           },

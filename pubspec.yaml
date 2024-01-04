@@ -33,6 +33,12 @@ dependencies:
   dots_indicator:
   flutter:
     sdk: flutter
+  svg_flutter: any
+  retrofit: '>=4.0.0 <5.0.0'
+  logger: any
+  json_annotation: ^4.8.1
+  dio: ^5.4.0
+  url_launcher: ^6.2.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -42,6 +48,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: '>=7.0.0 <8.0.0'
+  build_runner: '>=2.3.0 <4.0.0'
+  json_serializable: ^6.6.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,6 +74,7 @@ flutter:
   assets:
     - assets/0splash_page/
     - assets/1pageviewpage/
+    - assets/9_home_page/
 
 
 
