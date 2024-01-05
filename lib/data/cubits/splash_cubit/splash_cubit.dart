@@ -8,7 +8,7 @@ enum Status{initial,loding, loaded,error}
 
 class SplashCubit extends Cubit<SplashState>{
 
-  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false));
+  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
 
 
   void funksiya()async {
@@ -38,6 +38,10 @@ class SplashCubit extends Cubit<SplashState>{
   void isShowChekbox(bool chekBox1) async {
     print(chekBox1);
     emit(state.copyWith(chekBox:!chekBox1));
+  }
+  void isShowSelect(String select) async {
+    print(select);
+    emit(state.copyWith(select:select));
   }
 
   void isShowCount(int count) async {

@@ -5,25 +5,31 @@ class SplashState {
   final bool? isEyeShow;
   final bool? chekBox;
   final int count;
+  final String? select;
+
 
   SplashState({
     this.status,
     this.isEyeShow = false,
     this.chekBox = false,
      this.count=0,
+    this.select=''
   });
 
   SplashState copyWith({
     Status? status,
     bool? isEyeShow,
     bool? chekBox,
-    int? count
+    int? count,
+    String? select,
+
   }) {
     return SplashState(
       status: status ?? this.status,
       isEyeShow: isEyeShow ?? this.isEyeShow,
       chekBox: chekBox ?? this.chekBox,
-      count: count ?? this.count
+      count: count ?? this.count,
+      select: select ?? this.select,
     );
   }
 

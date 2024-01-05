@@ -99,6 +99,7 @@ class HomePage extends StatelessWidget {
              ),
            );
          }
+         //
          else{
            return Scaffold(
              body: SafeArea(child: Center(child: CircularProgressIndicator()),),

@@ -22,7 +22,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
           emit(NewsLoadedState(modelNews));
         }
         else (NewsFailureState());
-
       }
       on Exception catch(_){
         print('e== ${_}');

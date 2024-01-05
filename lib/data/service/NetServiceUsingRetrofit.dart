@@ -14,7 +14,6 @@ abstract class NetWorkService{
   factory NetWorkService(Dio dio,{String baseUrl})=_NetWorkService;
 
   @GET('/everything?q=apple')
-
   Future<ModelNews> appleNews(
       @Query('from') String from,
       @Query('to') String to,
