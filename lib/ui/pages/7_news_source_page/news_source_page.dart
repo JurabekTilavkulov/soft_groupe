@@ -1214,7 +1214,7 @@ class NewsPage extends StatelessWidget {
                 borderRadius:BorderRadius.circular(6)
             ),
             onPressed:(){
-              Navigator.pushReplacementNamed(context, '/topicsPage');
+              Navigator.pushNamed(context, '/filProfilPage');
             },
             child: Container(
               width: 380,

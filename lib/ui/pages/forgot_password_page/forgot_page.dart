@@ -6,7 +6,7 @@ import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 
 class ForgotPage extends StatelessWidget {
    ForgotPage({super.key});
-
+   final _formKey = GlobalKey<FormState>();
   PageController pageController=PageController();
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ForgotPage extends StatelessWidget {
       return Container(
         child:PageView(
           controller:pageController,
-          physics:NeverScrollableScrollPhysics(),
+         // physics:NeverScrollableScrollPhysics(),
           children: [
             Container(
               padding:EdgeInsets.only(left:24,right:24),
@@ -68,28 +68,32 @@ class ForgotPage extends StatelessWidget {
                     ),
                     child:Row(
                       children: [
-                        Padding(padding:EdgeInsets.only(left:16),
-                        child:Image.asset('assets/1pageviewpage/img_3.png',width: 64,
-                          height: 64,),),
-                        SizedBox(width:16),
-                        Column(
+                        SizedBox(width:5,),
+                        Expanded(child:
+                         Center(child:  Image.asset('assets/1pageviewpage/img_3.png',width: 64,
+                           height: 64,),)
+                        ),
+
+                        SizedBox(width:16,),
+                        Expanded(
+                          flex:3,
+                            child:Column(
                           crossAxisAlignment:CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                          Text('via Email:',style: TextStyle(color: Color(0xFF667080),
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,),),
+                            Text('via Email:',style: TextStyle(color: Color(0xFF667080),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,),),
                             Text('example@youremail.com',style:TextStyle(color: Color(0xFF050505),
                               fontSize: 16,
                               fontWeight: FontWeight.w400,),)
                           ],
-                        ),
+                        )),
 
-                     SizedBox(
-                       width:20,
-                     ),
-                     Image.asset('assets/1pageviewpage/img_5.png',width: 20,
-                       height: 20,)
+
+                     Expanded(child: Image.asset('assets/1pageviewpage/img_5.png',width: 20,
+                       height: 20,))
+
 
 
 
@@ -109,28 +113,31 @@ class ForgotPage extends StatelessWidget {
                     ),
                     child:Row(
                       children: [
-                        Padding(padding:EdgeInsets.only(left:16),
-                          child:Image.asset('assets/1pageviewpage/img_4.png',width: 64,
-                            height: 64,),),
-                        SizedBox(width:16),
-                        Column(
-                          crossAxisAlignment:CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('via Email:',style: TextStyle(color: Color(0xFF667080),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,),),
-                            Text('+62-8421-4512-2531',style:TextStyle(color: Color(0xFF050505),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,),)
-                          ],
-                        ),
+                        SizedBox(width:5,),
+                        Expanded(child:Image.asset('assets/1pageviewpage/img_4.png',width: 64,
+                          height: 64,),),
 
-                        SizedBox(
-                          width:53,
-                        ),
-                        Image.asset('assets/1pageviewpage/img_5.png',width: 20,
-                          height: 20,)
+
+                        SizedBox(width:16,),
+                       Expanded(
+                         flex:3,
+                         child:Column(
+                         crossAxisAlignment:CrossAxisAlignment.start,
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           Text('via Email:',style: TextStyle(color: Color(0xFF667080),
+                             fontSize: 14,
+                             fontWeight: FontWeight.w400,),),
+                           Text('+62-8421-4512-2531',style:TextStyle(color: Color(0xFF050505),
+                             fontSize: 16,
+                             fontWeight: FontWeight.w400,),)
+                         ],
+                       ),),
+
+
+                        Expanded(child:Image.asset('assets/1pageviewpage/img_5.png',width: 20,
+                          height: 20,))
+
 
 
 
@@ -165,13 +172,11 @@ class ForgotPage extends StatelessWidget {
             ),
             Container(
               padding:EdgeInsets.only(left:24,right:24),
-              child:ListView(
-                children: [
-                  Column(
+              child: Column(
                     crossAxisAlignment:CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height:200,
+                        height:190,
                         width:379,
                         // color: Colors.blue,
                         child: Column(
@@ -189,20 +194,46 @@ class ForgotPage extends StatelessWidget {
 
                       Text('Email ID / Mobile number',style: TextStyle(color: Color(0xFF4E4B66),),),
 
-                      Container(
-                        width: 380,
-                        height: 48,
-                        child:TextField(
-                          decoration:InputDecoration(
-                              border:OutlineInputBorder(
-                                  borderRadius:BorderRadius.circular(6)
-                              )
-                          ),
-                        ),
-                      ),
+                     Container(
+                       height:100,
+                       child:  Container(
+                         width: 380,
+                         height:66,
+                         child: Form(
+                             key: _formKey,
+                             child: Column(
+                               children: [
+                                 TextFormField(
+                                   validator: (value){
+                                     if(value==null || value.isEmpty){
+                                       return 'Please enter some password';
+                                     }
+                                     return null;
+
+                                   },
+                                   obscureText:state.isEyeShow ?? false,
+                                   decoration:InputDecoration(
+                                       hintText: 'Password',
+                                       border:OutlineInputBorder(
+                                           borderRadius: BorderRadius.circular(10)
+                                       ),
+                                       suffixIcon:IconButton(
+                                         onPressed:(){
+                                           context.read<SplashCubit>().isShowPassword((state.isEyeShow??false));
+                                         },
+                                         icon: Icon((state.isEyeShow ?? false)
+                                             ? Icons.visibility_off
+                                             : Icons.visibility),
+                                       )
+                                   ),
+                                 )
+                               ],
+                             )),
+                       ),
+                     ),
 
                       SizedBox(
-                        height:382,
+                        height:341,
                       ),
                       MaterialButton(
                         padding:EdgeInsets.zero,
@@ -210,7 +241,10 @@ class ForgotPage extends StatelessWidget {
                             borderRadius:BorderRadius.circular(6)
                         ),
                         onPressed:(){
-                          Navigator.pushReplacementNamed(context, '/vertificationPage');
+                          if (_formKey.currentState!.validate() ) {
+                            Navigator.pushReplacementNamed(context,'/vertificationPage');
+                          }
+
                         },
                         child: Container(
                           width: 380,
@@ -225,8 +259,7 @@ class ForgotPage extends StatelessWidget {
                         ),)
                     ],
                   )
-                ],
-              ),
+
             ),
           ],
         ),

@@ -9,6 +9,7 @@ import 'package:soft_groupe/ui/pages/4_verification_page/verification_page.dart'
 import 'package:soft_groupe/ui/pages/5_select_country_page/select_country_page.dart';
 import 'package:soft_groupe/ui/pages/6_topics_page/topics_page.dart';
 import 'package:soft_groupe/ui/pages/7_news_source_page/news_source_page.dart';
+import 'package:soft_groupe/ui/pages/8_fill_profil_page/fill_profil_page.dart';
 
 import 'package:soft_groupe/ui/pages/9_home_page/home_page.dart';
 import 'package:soft_groupe/ui/pages/forgot_password_page/forgot_page.dart';
@@ -80,6 +81,10 @@ class MyApp extends StatelessWidget {
               case "/newsPage":
                 return CupertinoPageRoute(
                   builder: (context) => NewsPage(),
+                );
+              case "/filProfilPage":
+                return CupertinoPageRoute(
+                  builder: (context) => FillProfilPage(),
                 );
                 case "/HomePage":
                 return CupertinoPageRoute(
