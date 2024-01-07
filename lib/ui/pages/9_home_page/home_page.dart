@@ -2,13 +2,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/blocs/news_bloc/news_bloc.dart';
+import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../data/model/model_news.dart';
 
-class HomePage extends StatelessWidget {
+/*class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   NewsBloc newsBloc = NewsBloc(NetWorkService(Dio()));
@@ -110,4 +111,52 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}*/
+
+
+class HomePage extends StatelessWidget {
+   HomePage({super.key,});
+
+   List<String> list=['all','apple'];
+
+  String q='';
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SplashCubit,SplashState>(
+        bloc: context.read<SplashCubit>()..news(q),
+        builder:(context,state){
+          return Scaffold(
+              body:Center(
+                child:getBody(state,context),
+              )
+          );
+        });
+  }
+
+  getBody(SplashState state, BuildContext context) {
+    if(state.status==Status.loding){
+      return Center(child: CircularProgressIndicator(),);
+    }
+    if(state.status==Status.loaded){
+      return Column(
+        children: [
+          ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder:(context,index){
+            return Text('${list[index]}');
+          }),
+
+          ListView.builder(
+            itemBuilder: (context,index){
+              return
+            },
+          )
+        ],
+      );
+    }
+  }
+
+
+
 }
+

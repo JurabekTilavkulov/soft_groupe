@@ -21,6 +21,36 @@ class _NetWorkService implements NetWorkService {
   String? baseUrl;
 
   @override
+  Future<ModelNews> news(
+    String q,
+    String apiKey,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'apiKey': apiKey};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ModelNews>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/everything?${q}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ModelNews.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<ModelNews> appleNews(
     String from,
     String to,

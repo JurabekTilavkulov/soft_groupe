@@ -6,6 +6,7 @@ class SplashState {
   final bool? chekBox;
   final int count;
   final String? select;
+  final ModelNews? modelNews;
 
 
   SplashState({
@@ -13,7 +14,8 @@ class SplashState {
     this.isEyeShow = false,
     this.chekBox = false,
      this.count=0,
-    this.select=''
+    this.select='',
+    this.modelNews,
   });
 
   SplashState copyWith({
@@ -22,7 +24,7 @@ class SplashState {
     bool? chekBox,
     int? count,
     String? select,
-
+    ModelNews? modelNews
   }) {
     return SplashState(
       status: status ?? this.status,
@@ -30,6 +32,7 @@ class SplashState {
       chekBox: chekBox ?? this.chekBox,
       count: count ?? this.count,
       select: select ?? this.select,
+      modelNews: modelNews ?? this.modelNews
     );
   }
 

@@ -1,6 +1,8 @@
 
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soft_groupe/data/model/model_news.dart';
+import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
 
 
 part 'splash_state.dart';
@@ -8,8 +10,9 @@ enum Status{initial,loding, loaded,error}
 
 class SplashCubit extends Cubit<SplashState>{
 
-  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
+  SplashCubit(this.netWorkService):super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
 
+  NetWorkService netWorkService;
 
   void funksiya()async {
     await Future.delayed(Duration(seconds:5),(){
@@ -49,6 +52,20 @@ class SplashCubit extends Cubit<SplashState>{
     emit(state.copyWith(count:state.count));
   }
 
+
+  void news(String q)async{
+
+    emit(state.copyWith(status:Status.loding));
+
+    ModelNews? modelNews=await netWorkService.news(q,'5a88a82c5d0b43d9ac73e8b2f6f6172d');
+    if(modelNews!=null){
+      emit(state.copyWith(modelNews:modelNews));
+    }
+    else{
+      emit(state.copyWith(status:Status.error));
+    }
+
+  }
 
 
 }
