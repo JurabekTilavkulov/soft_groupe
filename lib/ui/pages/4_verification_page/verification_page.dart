@@ -32,7 +32,7 @@ class VertificationPage extends StatelessWidget {
       return Container(
         child:PageView(
           controller:pageController,
-       //  physics:NeverScrollableScrollPhysics(),
+         physics:NeverScrollableScrollPhysics(),
           children: [
             Container(
               padding:EdgeInsets.only(left:24,right:24),
@@ -283,7 +283,7 @@ class VertificationPage extends StatelessWidget {
                         borderRadius:BorderRadius.circular(6)
                     ),
                     onPressed:(){
-                      Navigator.pushReplacementNamed(context, '/SelectCountryPage');
+                      Navigator.pushNamed(context, '/SelectCountryPage');
                     },
                     child: Container(
                       width: 380,

@@ -32,7 +32,7 @@ class ForgotPage extends StatelessWidget {
       return Container(
         child:PageView(
           controller:pageController,
-         // physics:NeverScrollableScrollPhysics(),
+          physics:NeverScrollableScrollPhysics(),
           children: [
             Container(
               padding:EdgeInsets.only(left:24,right:24),
@@ -242,7 +242,7 @@ class ForgotPage extends StatelessWidget {
                         ),
                         onPressed:(){
                           if (_formKey.currentState!.validate() ) {
-                            Navigator.pushReplacementNamed(context,'/vertificationPage');
+                            Navigator.pushNamed(context,'/vertificationPage');
                           }
 
                         },

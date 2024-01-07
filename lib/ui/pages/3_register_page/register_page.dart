@@ -309,7 +309,8 @@ class RegisterPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MaterialButton(onPressed:(){},
+                    
+                    Expanded(child:MaterialButton(onPressed:(){},
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6)
@@ -335,9 +336,12 @@ class RegisterPage extends StatelessWidget {
                                 fontWeight: FontWeight.w600,),)
                             ],),),
 
-                      ),),
-
-                    MaterialButton(onPressed:(){},
+                      ),),),
+                    
+                  SizedBox(
+                    width:30,
+                  ),
+                    Expanded(child: MaterialButton(onPressed:(){},
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6)
@@ -363,7 +367,7 @@ class RegisterPage extends StatelessWidget {
                                 fontWeight: FontWeight.w600,),)
                             ],),),
 
-                      ),)
+                      ),))
 
                   ],
                 ),

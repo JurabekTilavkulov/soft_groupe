@@ -33,9 +33,11 @@ class Onbording extends StatelessWidget {
       return Center(child:CircularProgressIndicator(),);
     }
     if(state.status==Status.loaded){
-      return Stack(
+      return Column(
         children: [
-          PageView(
+          Expanded(
+            flex:7,
+            child:PageView(
             controller: pageController,
             onPageChanged: (index2){
               state.count!=index2;
@@ -47,6 +49,7 @@ class Onbording extends StatelessWidget {
                 child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
                     Image.asset('assets/1pageviewpage/cub.png'),
                     Padding(padding:EdgeInsets.only(top:24,left: 24),
                       child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
@@ -95,42 +98,53 @@ class Onbording extends StatelessWidget {
                 ),
               )
             ],
-          ),
+          ),),
+         
 
 
 
-     Positioned(
-              top:745,
-              left:24,
-              child:Row(
-                children: [
-                  DotsIndicator(
-                    decorator: DotsDecorator(
-                      activeColor: Colors.blue,
-                    ),
-                    dotsCount:3,
-                    position:state.count
-                  ),
-                  MaterialButton(
+       Expanded(child: Positioned(
+           top:745,
+           left:24,
+           child:Row(
+             mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+             children: [
+
+               Expanded(child:Padding(
+                 padding:EdgeInsets.only(right:80),
+                 child: DotsIndicator(
+                     decorator: DotsDecorator(
+                       activeColor: Colors.blue,
+                     ),
+                     dotsCount:3,
+                     position:state.count
+                 ),
+               ),),
+
+               Expanded(child:Padding(
+                 padding:EdgeInsets.only(left:80),
+                 child: MaterialButton(
                    padding: EdgeInsets.zero,
                    shape:RoundedRectangleBorder(
-                     borderRadius: BorderRadius.circular(6)
+                       borderRadius: BorderRadius.circular(6)
                    ),
                    onPressed:(){
-                  Navigator.pushReplacementNamed(context,'/loginPage' );
-                 },
-                 child:  Container(
-                   width: 85,
-                   height: 50,
-                   decoration:BoxDecoration(
-                     borderRadius: BorderRadius.circular(6),
-                     color: Colors.blue
-                   ),
-                   child:Center(child:Text('Next',style:TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color:Colors.white),),),
-                 ),)
+                     Navigator.pushReplacementNamed(context,'/loginPage' );
+                   },
+                   child:  Container(
+                     width: 85,
+                     height: 50,
+                     decoration:BoxDecoration(
+                         borderRadius: BorderRadius.circular(6),
+                         color: Colors.blue
+                     ),
+                     child:Center(child:Text('Next',style:TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color:Colors.white),),),
+                   ),),
+               ))
 
-                ],
-              ))
+
+             ],
+           )))
         ],
       );
     }
