@@ -143,13 +143,18 @@ class HomePage extends StatelessWidget {
           ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder:(context,index){
-            return Text('${list[index]}');
+            return TextButton(
+              onPressed: (){
+                q=list[index];
+              },
+              child: Text('${list[index]}'),
+            );
           }),
 
           ListView.builder(
             itemBuilder: (context,index){
-              return
-            },
+              return Image.network('${state.modelNews?.articles?[index].url}');
+              },
           )
         ],
       );
