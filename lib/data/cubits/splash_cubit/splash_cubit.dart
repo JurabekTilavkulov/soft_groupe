@@ -53,19 +53,7 @@ class SplashCubit extends Cubit<SplashState>{
   }
 
 
-  void news(String q)async{
 
-    emit(state.copyWith(status:Status.loding));
-
-    ModelNews? modelNews=await netWorkService.news(q,'5a88a82c5d0b43d9ac73e8b2f6f6172d');
-    if(modelNews!=null){
-      emit(state.copyWith(modelNews:modelNews));
-    }
-    else{
-      emit(state.copyWith(status:Status.error));
-    }
-
-  }
 
 
 }

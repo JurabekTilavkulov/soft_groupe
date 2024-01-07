@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../data/model/model_news.dart';
 
-/*class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   NewsBloc newsBloc = NewsBloc(NetWorkService(Dio()));
@@ -111,57 +111,5 @@ import '../../../data/model/model_news.dart';
       ),
     );
   }
-}*/
-
-
-class HomePage extends StatelessWidget {
-   HomePage({super.key,});
-
-   List<String> list=['all','apple'];
-
-  String q='';
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SplashCubit,SplashState>(
-        bloc: context.read<SplashCubit>()..news(q),
-        builder:(context,state){
-          return Scaffold(
-              body:Center(
-                child:getBody(state,context),
-              )
-          );
-        });
-  }
-
-  getBody(SplashState state, BuildContext context) {
-    if(state.status==Status.loding){
-      return Center(child: CircularProgressIndicator(),);
-    }
-    if(state.status==Status.loaded){
-      return Column(
-        children: [
-          ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder:(context,index){
-            return TextButton(
-              onPressed: (){
-                q=list[index];
-              },
-              child: Text('${list[index]}'),
-            );
-          }),
-
-          ListView.builder(
-            itemBuilder: (context,index){
-              return Image.network('${state.modelNews?.articles?[index].url}');
-              },
-          )
-        ],
-      );
-    }
-  }
-
-
-
 }
 
