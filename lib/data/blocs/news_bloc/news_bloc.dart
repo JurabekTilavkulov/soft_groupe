@@ -12,30 +12,11 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   NetWorkService netWorkService;
   NewsBloc(this.netWorkService) : super(NewsInitialState()) {
 
-    //--------------------------------------------------------------------------
-    on<AppleEvent>((event, emit) async{
-      try{
-        ModelNews modelNews=await netWorkService.appleNews(event.from,event.to,event.sortBy,event.apiKey);
-
-        print(modelNews);
-        if(modelNews!=null){
-          emit(NewsLoadedState(modelNews));
-        }
-        else (NewsFailureState());
-      }
-      on Exception catch(_){
-        print('e== ${_}');
-        emit(NewsFailureState());
-        rethrow;
-      }
-    });
-    //--------------------------------------------------------------------------
-
     on<CountryEvent>((event, emit) async{
       try{
-        ModelNews modelNews=await netWorkService.countryNews(event.country,event.category,event.apiKey);
+        ModelNews modelNews=await netWorkService.countryNews(event.country);
 
-        print(modelNews);
+        print("news country Bloc:${modelNews}");
         if(modelNews!=null){
           emit(NewsLoadedState(modelNews));
         }
@@ -48,6 +29,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
         rethrow;
       }
     });
-    //--------------------------------------------------------------------------
+
   }
 }

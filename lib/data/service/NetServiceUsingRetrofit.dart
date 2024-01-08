@@ -14,35 +14,33 @@ abstract class NetWorkService{
   factory NetWorkService(Dio dio,{String baseUrl})=_NetWorkService;
 
 
-
-
-
-  @GET('/everything?q=apple')
-  Future<ModelNews> appleNews(
-      @Query('from') String from,
-      @Query('to') String to,
-      @Query('sortBy') String sortBy,
+  @GET('/everything?{q}')
+  Future<ModelNews?> news(
+      @Path('q') String q,
       @Query('apiKey') String apiKey
       );
 
-  @GET('/everything?q=tesla')
+
+  @GET('/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=57d556b41e0a40169cbecea58e562d76')
+  Future<ModelNews> appleNews(
+      @Query('from') String from,
+      @Query('to') String to,
+      );
+//
+
+  @GET('/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=57d556b41e0a40169cbecea58e562d76')
   Future<ModelNews> teslaNews(
-      @Query('sources') String from,
-      @Query('sortBy') String sortBy,
-      @Query('apiKey') String apiKey,
+      @Query('from') String from,
       );
 
-  @GET('/top-headlines')
+  @GET('/top-headlines?{country}&category=business&apiKey=57d556b41e0a40169cbecea58e562d76')
   Future<ModelNews> countryNews(
       @Query('country') String country,
-      @Query('category') String category,
-      @Query('apiKey') String apiKey,
       );
 
-  @GET('/everything?domains=wsj.com')
-  Future<ModelNews> techcrunchNews(
-      @Query('apiKey') String apiKey,
-      );
+  @GET('/top-headlines?sources=techcrunch&apiKey=57d556b41e0a40169cbecea58e562d76')
+  Future<ModelNews> techcrunchNews();
 
-
+  @GET('/everything?domains=wsj.com&apiKey=57d556b41e0a40169cbecea58e562d76')
+  Future<ModelNews> allNews();
 }
