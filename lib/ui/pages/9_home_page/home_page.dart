@@ -197,9 +197,15 @@ class HomePage extends StatelessWidget {
                bottomNavigationBar: BottomNavigationBar(
                  onTap: (int index){
                    BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);// o'zgaruvchiga qiymat berilmoqda
-               print("index :${index}");
-               print("state :${state1.value1}");
-
+                   if (index == 1) {
+                     Navigator.pushNamed(context,"/ExplorePage");
+                   }
+                   if (index == 2) {
+                     Navigator.pushNamed(context, "/BookMarkPage");
+                   }
+                   if (index == 3) {
+                     Navigator.pushNamed(context, "/ProfilePage");
+                   }
                 },
                 unselectedItemColor:Colors.black,
                  showUnselectedLabels:true,

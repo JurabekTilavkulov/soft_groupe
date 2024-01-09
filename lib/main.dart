@@ -7,6 +7,9 @@ import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/data/model/model_news.dart';
 import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
 import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
+import 'package:soft_groupe/ui/pages/13_author_profile_page/author_profile_page.dart';
+import 'package:soft_groupe/ui/pages/14_explore_page/explore_page.dart';
+import 'package:soft_groupe/ui/pages/15_book_mark_page/book_mark_page.dart';
 import 'package:soft_groupe/ui/pages/16_detail_screen_news_page/detail_screen_page.dart';
 import 'package:soft_groupe/ui/pages/1_onbording/page_view.dart';
 import 'package:soft_groupe/ui/pages/2_login_page/login_page.dart';
@@ -56,52 +59,52 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          initialRoute: '/',
-          //initialRoute: '/HomePage',
-         // routes: { '/HomePage':(context)=>HomePage()},
+          //initialRoute: '/',
+          initialRoute: '/HomePage',
+
           onGenerateRoute: (settings) {
 
             switch (settings.name) {
-              case "/":
-                return CupertinoPageRoute(
-                  builder: (context) => SplashPage(),
-                );
-              case "/pageView":
-                return CupertinoPageRoute(
-                  builder: (context) => Onbording(),
-                );
-              case "/loginPage":
-                return CupertinoPageRoute(
-                  builder: (context) => LoginPage(),
-                );
-              case "/registerPage":
-                return CupertinoPageRoute(
-                  builder: (context) => RegisterPage(),
-                );
-              case "/forgotPage":
-                return CupertinoPageRoute(
-                  builder: (context) => ForgotPage(),
-                );
-              case "/vertificationPage":
-                return CupertinoPageRoute(
-                  builder: (context) => VertificationPage(),
-                );
-              case "/SelectCountryPage":
-                return CupertinoPageRoute(
-                  builder: (context) => SelectCountryPage(),
-                );
-              case "/topicsPage":
-                return CupertinoPageRoute(
-                  builder: (context) => TopicsPage(),
-                );
-              case "/newsPage":
-                return CupertinoPageRoute(
-                  builder: (context) => NewsPage(),
-                );
-              case "/filProfilPage":
-                return CupertinoPageRoute(
-                  builder: (context) => FillProfilPage(),
-                );
+              // case "/":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => SplashPage(),
+              //   );
+              // case "/pageView":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => Onbording(),
+              //   );
+              // case "/loginPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => LoginPage(),
+              //   );
+              // case "/registerPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => RegisterPage(),
+              //   );
+              // case "/forgotPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => ForgotPage(),
+              //   );
+              // case "/vertificationPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => VertificationPage(),
+              //   );
+              // case "/SelectCountryPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => SelectCountryPage(),
+              //   );
+              // case "/topicsPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => TopicsPage(),
+              //   );
+              // case "/newsPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => NewsPage(),
+              //   );
+              // case "/filProfilPage":
+              //   return CupertinoPageRoute(
+              //     builder: (context) => FillProfilPage(),
+              //   );
                 case "/HomePage":
                 return CupertinoPageRoute(
                   builder: (context) => HomePage(),
@@ -113,6 +116,18 @@ class MyApp extends StatelessWidget {
               case "/DatailScreenNewsPage":
                 return CupertinoPageRoute(
                   builder: (context) => DatailScreenNewsPage(articles: settings.arguments as Articles,),
+                );
+              case "/ExplorePage":
+                return CupertinoPageRoute(
+                  builder: (context) => ExplorePage(),
+                );
+              case "/BookMarkPage":
+                return CupertinoPageRoute(
+                  builder: (context) => BookMarkPage(),
+                );
+              case "/ProfilePage":
+                return CupertinoPageRoute(
+                  builder: (context) => ProfilePage(),
                 );
                 
             }
