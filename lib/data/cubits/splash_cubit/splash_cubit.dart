@@ -2,7 +2,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/model/model_news.dart';
-import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
+
 
 
 part 'splash_state.dart';
@@ -50,6 +50,9 @@ class SplashCubit extends Cubit<SplashState>{
   void isShowCount(int count) async {
     print(count);
     emit(state.copyWith(count:state.count));
+  }
+  Future<void> onChangeOnly({required value1})async{  //xech qanaqa boshlangich qiymat berilmaydi bunda
+    emit(state.copyWith(value1A: value1));     // bu joyda return bo'lib kerakli joyga qaytadi
   }
 
 

@@ -6,6 +6,7 @@ class SplashState {
   final bool? chekBox;
   final int count;
   final String? select;
+  final int? value1;
 
 
   SplashState({
@@ -14,6 +15,7 @@ class SplashState {
     this.chekBox = false,
      this.count=0,
     this.select='',
+    this.value1=0,
 
   });
 
@@ -23,7 +25,8 @@ class SplashState {
     bool? chekBox,
     int? count,
     String? select,
-    ModelNews? modelNews
+    ModelNews? modelNews,
+    int? value1A,   // bunda ValueA SplashState ning copyWith funcsiyasini maydoni
   }) {
     return SplashState(
       status: status ?? this.status,
@@ -31,7 +34,7 @@ class SplashState {
       chekBox: chekBox ?? this.chekBox,
       count: count ?? this.count,
       select: select ?? this.select,
-    );
+      value1: value1A ?? this.value1, //funcsiyasi orqali qiymat berilgan bolsa, classni maydonini shu funksiya orqali cantructor yordami bilan to'ldiradi
+    );                                 /* aks xolda qiymat berilmagan bo'lsa, constructor orqali oladi  */
   }
-
 }

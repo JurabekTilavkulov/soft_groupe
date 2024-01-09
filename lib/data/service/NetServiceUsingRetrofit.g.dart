@@ -21,7 +21,7 @@ class _NetWorkService implements NetWorkService {
   String? baseUrl;
 
   @override
-  Future<ModelNews> news(
+  Future<ModelNews?> news(
     String q,
     String apiKey,
   ) async {
@@ -30,7 +30,7 @@ class _NetWorkService implements NetWorkService {
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ModelNews>(Options(
+        .fetch<Map<String, dynamic>?>(_setStreamType<ModelNews>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -46,7 +46,8 @@ class _NetWorkService implements NetWorkService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ModelNews.fromJson(_result.data!);
+    final value =
+        _result.data == null ? null : ModelNews.fromJson(_result.data!);
     return value;
   }
 
@@ -54,15 +55,11 @@ class _NetWorkService implements NetWorkService {
   Future<ModelNews> appleNews(
     String from,
     String to,
-    String sortBy,
-    String apiKey,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'from': from,
       r'to': to,
-      r'sortBy': sortBy,
-      r'apiKey': apiKey,
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
@@ -74,7 +71,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?q=apple',
+              '/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=57d556b41e0a40169cbecea58e562d76',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -88,17 +85,9 @@ class _NetWorkService implements NetWorkService {
   }
 
   @override
-  Future<ModelNews> teslaNews(
-    String from,
-    String sortBy,
-    String apiKey,
-  ) async {
+  Future<ModelNews> teslaNews(String from) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'sources': from,
-      r'sortBy': sortBy,
-      r'apiKey': apiKey,
-    };
+    final queryParameters = <String, dynamic>{r'from': from};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -109,7 +98,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?q=tesla',
+              '/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=57d556b41e0a40169cbecea58e562d76',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -123,17 +112,9 @@ class _NetWorkService implements NetWorkService {
   }
 
   @override
-  Future<ModelNews> countryNews(
-    String country,
-    String category,
-    String apiKey,
-  ) async {
+  Future<ModelNews> countryNews(String country) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'country': country,
-      r'category': category,
-      r'apiKey': apiKey,
-    };
+    final queryParameters = <String, dynamic>{r'country': country};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -144,7 +125,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/top-headlines',
+              '/top-headlines?{country}&category=business&apiKey=57d556b41e0a40169cbecea58e562d76',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -158,9 +139,9 @@ class _NetWorkService implements NetWorkService {
   }
 
   @override
-  Future<ModelNews> techcrunchNews(String apiKey) async {
+  Future<ModelNews> techcrunchNews() async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'apiKey': apiKey};
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -171,7 +152,34 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?domains=wsj.com',
+              '/top-headlines?sources=techcrunch&apiKey=57d556b41e0a40169cbecea58e562d76',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ModelNews.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ModelNews> allNews() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ModelNews>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/everything?domains=wsj.com&apiKey=57d556b41e0a40169cbecea58e562d76',
               queryParameters: queryParameters,
               data: _data,
             )
