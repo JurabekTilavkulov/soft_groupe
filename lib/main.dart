@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers:[
 
-      BlocProvider(create:(context)=>SplashCubit(NetWorkService(Dio())),
+      BlocProvider(create:(context)=>SplashCubit(),
       ),
 
 

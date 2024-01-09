@@ -10,9 +10,9 @@ enum Status{initial,loding, loaded,error}
 
 class SplashCubit extends Cubit<SplashState>{
 
-  SplashCubit(this.netWorkService):super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
+  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
 
-  NetWorkService netWorkService;
+
 
   void funksiya()async {
     await Future.delayed(Duration(seconds:5),(){
