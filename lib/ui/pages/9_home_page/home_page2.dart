@@ -7,6 +7,7 @@ import '../../../data/blocs/all_bloc/all_bloc.dart';
 import '../../../data/blocs/apple_bloc/apple_bloc.dart';
 import '../../../data/blocs/techno_bloc/techno_bloc.dart';
 import '../../../data/blocs/tesla_bloc/tesla_bloc.dart';
+import '../../../data/cubits/splash_cubit/splash_cubit.dart';
 import '../../../data/model/model_news.dart';
 import '../16_detail_screen_news_page/detail_screen_page.dart';
 
@@ -16,10 +17,12 @@ class HomePage2 extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return DefaultTabController(length: 5, child:
-    Scaffold(
+    BlocBuilder<SplashCubit, SplashState>(
+  builder: (context1, state1) {
+    return Scaffold(
         body: Padding(padding: const EdgeInsets.only(left: 10,right: 10,top: 5),
-        child: SafeArea(child: SingleChildScrollView(
-        child: Column(
+          child: SafeArea(child: SingleChildScrollView(
+            child: Column(
           children: [
              Row( //------------------------------------------------------eng tepa birinchi qator
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +35,9 @@ class HomePage2 extends StatelessWidget {
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(onPressed: (){}, child: Text('Latest',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16),)),
+                TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text('Latest',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16),)),
                 TextButton(onPressed: (){}, child: Text('Sea all',style: TextStyle(color: Colors.black45))),
               ],),
             Container(
@@ -60,10 +65,8 @@ class HomePage2 extends StatelessWidget {
               // width: MediaQuery.of(context).size.width,
               child: TabBarView(
                 children: [
-
-
+                  
                   BlocBuilder<AllBloc, AllState>(builder: (context, state) {
-
                     return buildBody0(state);},),
 
                   BlocBuilder<AppleBloc, AppleState>(builder: (context, state) {
@@ -87,12 +90,16 @@ class HomePage2 extends StatelessWidget {
 
       bottomNavigationBar: BottomNavigationBar(
               onTap: (int index){
-
+                BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);
                 print("index :${index}");
 
               },
+              currentIndex: state1.value1!,
+
               unselectedItemColor:Colors.black,
-              selectedItemColor:Colors.black,
+              selectedItemColor:Colors.blue,
+              showUnselectedLabels:true,
+              unselectedLabelStyle:TextStyle(color: Colors.black),
               items: const[
                 BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
                 BottomNavigationBarItem(icon: Icon(Icons.explore),label: "Explore"),
@@ -100,7 +107,9 @@ class HomePage2 extends StatelessWidget {
                 BottomNavigationBarItem(icon: Icon(Icons.portrait_rounded),label: "Profile"),
               ],
             ),
-        )
+        );
+  },
+)
     );
     }
   Widget buildBody0(AllState state){

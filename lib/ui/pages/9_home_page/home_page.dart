@@ -12,22 +12,23 @@ import '../../../data/blocs/tesla_bloc/tesla_bloc.dart';
 
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
+  //TextEditingController textEditingController=TextEditingController();
 
-  TextEditingController textEditingController=TextEditingController();
-  int minusday=0;
+
+
 
   @override
   Widget build(BuildContext context) {
 
 
     DateTime dateTime=DateTime.now();
-    String dayTime='${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-1-minusday)<9?'0':''}${dateTime.day-1}';
+    String dayTime='${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-1)<9?'0':''}${dateTime.day-1}';
 
     BlocProvider.of<AllBloc>(context).add(AllLoadedEvent());
     BlocProvider.of<AppleBloc>(context).add(AppleLoadedEvent(dayTime,dayTime));
     BlocProvider.of<TechnoBloc>(context).add(TechLoadedEvent());
-    BlocProvider.of<TeslaBloc>(context).add(TeslaLoadedEvent('2023-12-08'));
+    BlocProvider.of<TeslaBloc>(context).add(TeslaLoadedEvent('2023-12-09'));
     
     BlocProvider.of<NewsBloc>(context).add(CountryEvent('us'));
     return BlocBuilder<NewsBloc, NewsState>(
@@ -112,12 +113,13 @@ class HomePage extends StatelessWidget {
                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                            children: [
                              TextButton(onPressed: (){
+
                                showDialog(context: context, builder: (context)=>AlertDialog(
                                  title: Text("Latest News"),
                                  content: Text("Enter here how many days ago do you need?"),
                                  actions: [
                                    TextField(
-                                     controller: textEditingController,
+                                    // controller:textEditingController,
                                      decoration: InputDecoration(
                                        border: OutlineInputBorder(),
                                        hintText: ' 1'
@@ -128,8 +130,12 @@ class HomePage extends StatelessWidget {
                                     TextButton(onPressed: (){
                                       Navigator.pop(context);
                                     }, child:Text("Reject")),
-                                    TextButton(onPressed: (){
-                                      minusday=int.parse(textEditingController.text);
+                                    TextButton(onPressed: ()async{
+                                      // await BlocProvider.of<SplashCubit>(context1).changeMinusDay(enteringday: textEditingController);  //   kunni o'zgartirish uchun
+                                      // BlocProvider.of<AppleBloc>(context).add(AppleLoadedEvent(
+                                      //     '${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-1)<9?'0':''}${dateTime.day-1}',
+                                      //     '${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-1)<9?'0':''}${dateTime.day-1}'));
+                                     // Navigator.pop(context);
                                     }, child:Text("Apply"))
                                    ],)
                                  ],
@@ -190,16 +196,15 @@ class HomePage extends StatelessWidget {
            ),
                bottomNavigationBar: BottomNavigationBar(
                  onTap: (int index){
-                   BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);
+                   BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);// o'zgaruvchiga qiymat berilmoqda
                print("index :${index}");
                print("state :${state1.value1}");
 
                 },
-
-
                 unselectedItemColor:Colors.black,
+                 showUnselectedLabels:true,
                 selectedItemColor:Colors.blue,
-                 currentIndex: state1.value1!,
+                 currentIndex: state1.value1!,  // o'zgaruvchidan qiymat olinmoqda
 
                 items: const[
                BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),

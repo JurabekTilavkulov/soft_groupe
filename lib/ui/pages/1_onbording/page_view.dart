@@ -44,7 +44,7 @@ class Onbording extends StatelessWidget {
               context.read<SplashCubit>().isShowCount(index2);
               },
             children: [
-              Container(
+              Container(   //  page0
                 child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -61,8 +61,8 @@ class Onbording extends StatelessWidget {
 
                   ],
                 ),
-              ),
-              Container(
+              ),//  page0
+              Container(     //  page1
                 child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -78,8 +78,8 @@ class Onbording extends StatelessWidget {
 
                   ],
                 ),
-              ),
-              Container(
+              ),//  page1
+              Container(     //  page3
                 child:Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -95,7 +95,7 @@ class Onbording extends StatelessWidget {
 
                   ],
                 ),
-              )
+              )  //  page3
             ],
           ),),
          
