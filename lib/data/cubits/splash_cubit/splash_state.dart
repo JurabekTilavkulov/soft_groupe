@@ -15,7 +15,7 @@ class SplashState {
     this.chekBox = false,
      this.count=0,
     this.select='',
-    this.value1,
+    this.value1=0,
 
   });
 
