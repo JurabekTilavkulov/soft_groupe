@@ -194,7 +194,8 @@ class HomePage extends StatelessWidget {
                ),
              ),
            ),
-               bottomNavigationBar: BottomNavigationBar(
+
+           bottomNavigationBar: BottomNavigationBar(
                  onTap: (int index){
                    BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);// o'zgaruvchiga qiymat berilmoqda
                    if (index == 1) {
