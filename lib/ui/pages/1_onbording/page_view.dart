@@ -40,10 +40,9 @@ class Onbording extends StatelessWidget {
             child:PageView(
             controller: pageController,
             onPageChanged: (index2){
-              state.count!=index2;
+              state.count=index2;
               context.read<SplashCubit>().isShowCount(index2);
-
-            },
+              },
             children: [
               Container(
                 child:Column(

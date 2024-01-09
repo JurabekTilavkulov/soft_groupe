@@ -4,7 +4,7 @@ class SplashState {
   final Status? status;
   final bool? isEyeShow;
   final bool? chekBox;
-  final int count;
+   int count;
   final String? select;
   final int? value1;
 
