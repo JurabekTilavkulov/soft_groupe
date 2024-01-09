@@ -91,7 +91,15 @@ class HomePage2 extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
               onTap: (int index){
                 BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);
-                print("index :${index}");
+                if (index == 1) {
+                  Navigator.pushNamed(context,"/ExplorePage");
+                }
+                if (index == 2) {
+                  Navigator.pushNamed(context, "/BookMarkPage");
+                }
+                if (index == 3) {
+                  Navigator.pushNamed(context, "/ProfilePage");
+                }
 
               },
               currentIndex: state1.value1!,
