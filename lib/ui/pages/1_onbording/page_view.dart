@@ -102,44 +102,80 @@ class Onbording extends StatelessWidget {
 
 
 
-       Expanded(child: Positioned(
+       Expanded(child:
+       Positioned(
            top:745,
            left:24,
            child:Row(
              mainAxisAlignment:MainAxisAlignment.spaceEvenly,
              children: [
 
-               Expanded(child:Padding(
-                 padding:EdgeInsets.only(right:80),
-                 child: DotsIndicator(
-                     decorator: DotsDecorator(
-                       activeColor: Colors.blue,
-                     ),
-                     dotsCount:3,
-                     position:state.count
-                 ),
-               ),),
 
-               Expanded(child:Padding(
-                 padding:EdgeInsets.only(left:80),
-                 child: MaterialButton(
-                   padding: EdgeInsets.zero,
-                   shape:RoundedRectangleBorder(
+                  Container(child: DotsIndicator(
+                      onTap: (index){
+                        state.count=index;
+                        pageController.jumpToPage(index);
+                      },
+                      decorator: DotsDecorator(
+                        activeColor: Colors.blue,
+                      ),
+                      dotsCount:3,
+                      position:state.count
+                  ),),
+
+
+               if(state.count==0)SizedBox(
+                 width:200,
+               ),
+               if(state.count==1)SizedBox(
+                 width:120,
+               ),
+
+               if(state.count==2)SizedBox(
+                 width:70,
+               ),
+
+
+               if(state.count==1)TextButton(onPressed:(){pageController.jumpToPage(0);},child:
+               Text('Back',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xFFB0B3B8),),)),
+               if(state.count==1 || state.count==0)InkWell(
+                 borderRadius: BorderRadius.circular(6),
+                 onTap: (){
+                   pageController.nextPage(duration:Duration(milliseconds:5), curve:Curves.ease);
+                 },
+                 child: Container(
+                   width: 85,
+                   height: 50,
+                   decoration: BoxDecoration(
+                       color: Colors.blue,
                        borderRadius: BorderRadius.circular(6)
                    ),
-                   onPressed:(){
-                     Navigator.pushReplacementNamed(context,'/loginPage' );
-                   },
-                   child:  Container(
-                     width: 85,
-                     height: 50,
-                     decoration:BoxDecoration(
-                         borderRadius: BorderRadius.circular(6),
-                         color: Colors.blue
-                     ),
-                     child:Center(child:Text('Next',style:TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color:Colors.white),),),
-                   ),),
-               ))
+                   child: Center(
+                     child: Text('Next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 16),),
+                   ),
+                 ),
+               ),
+
+
+
+               if(state.count==2)TextButton(onPressed:(){pageController.jumpToPage(1);},child:
+               Text('Back',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xFFB0B3B8),),)),
+               if(state.count==2)InkWell(
+                 borderRadius: BorderRadius.circular(6),
+                 onTap: (){
+                   Navigator.pushReplacementNamed(context, '/loginPage');
+                 },
+                 child:Container(
+                   width: 142,
+                   height: 50,
+                   decoration: BoxDecoration(
+                       borderRadius: BorderRadius.circular(6),
+                       color: Colors.blue
+                   ),
+                   child: Center(
+                     child: Text("Get Started",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),),
+                   ),
+                 ) ,),
 
 
              ],
