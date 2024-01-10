@@ -7,11 +7,15 @@ import 'package:soft_groupe/data/model/model_news.dart';
 
 
 part 'splash_state.dart';
-enum Status{initial,loding, loaded,error}
+enum Status{
+  initial,
+  loding,
+  loaded,
+  error}
 
 class SplashCubit extends Cubit<SplashState>{
-
-  SplashCubit():super(SplashState(isEyeShow:false,status:Status.initial,chekBox:false,select:''));
+// boshlang'ich qiymat beerilmoqda
+  SplashCubit():super(  SplashState( isEyeShow:false, status:Status.initial,  chekBox:false,  select:''  ));
 
 
 
@@ -24,12 +28,11 @@ class SplashCubit extends Cubit<SplashState>{
 
   void onbording()async{
 
-    print(state);
-    emit(state.copyWith(status:Status.loding));
-    print(state);
-    await Future.delayed(Duration(seconds:3),(){
+    emit(state.copyWith(status:Status.loding));  //state ning copyWith funksiyasi orqali state ga Loading qiymat beriladi
+
+    await Future.delayed(Duration(seconds:5),(){
       emit(state.copyWith(status:Status.loaded));
-       print(state);
+      // State ning copyWith funk orqali yana state ga Loaded degan qiymat berildi
      });
 
   }
@@ -50,7 +53,7 @@ class SplashCubit extends Cubit<SplashState>{
 
   void isShowCount(int count) async {
     print(count);
-    emit(state.copyWith(count:state.count));
+    emit(state.copyWith(count:count));
   }
   Future<void> onChangeOnly({required value1})async{  //xech qanaqa boshlangich qiymat berilmaydi bunda
     emit(state.copyWith(value1A: value1));     // bu joyda return bo'lib kerakli joyga qaytadi
