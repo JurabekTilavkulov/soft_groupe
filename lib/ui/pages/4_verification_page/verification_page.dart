@@ -115,7 +115,7 @@ class VertificationPage extends StatelessWidget {
                       )
                   ),
                   SizedBox(
-                    height:430,
+                    height:MediaQuery.of(context).size.height/2,
                   ),
                   MaterialButton(
                     padding:EdgeInsets.zero,
@@ -221,7 +221,7 @@ class VertificationPage extends StatelessWidget {
                       ),
 
                       SizedBox(
-                        height:350,
+                        height:MediaQuery.of(context).size.height/2.45,
                       ),
                       MaterialButton(
                         padding:EdgeInsets.zero,
@@ -248,9 +248,8 @@ class VertificationPage extends StatelessWidget {
               ),
             ),
             Container(
-
+              padding:EdgeInsets.only(left:24,right:24),
               child:Column(
-
                 children: [
                   SizedBox(
                     height:150,
@@ -275,7 +274,7 @@ class VertificationPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height:258,
+                    height:MediaQuery.of(context).size.height/3.8,
                   ),
                   MaterialButton(
                     padding:EdgeInsets.zero,
@@ -286,7 +285,7 @@ class VertificationPage extends StatelessWidget {
                       Navigator.pushNamed(context, '/SelectCountryPage');
                     },
                     child: Container(
-                      width: 380,
+                      width:380,
                       height: 50,
                       decoration:BoxDecoration(
                           color: Colors.blue,

@@ -96,6 +96,37 @@ class MyApp extends StatelessWidget {
               case "/topicsPage":
                 return CupertinoPageRoute(
                   builder: (context) => TopicsPage(),   //6
+                );case "/":
+              return CupertinoPageRoute(
+                builder: (context) => SplashPage(),  // 0
+              );
+              case "/pageView":
+                return CupertinoPageRoute(
+                  builder: (context) => Onbording(),  //1
+                );
+              case "/loginPage":
+                return CupertinoPageRoute(
+                  builder: (context) => LoginPage(),   //2
+                );
+              case "/registerPage":
+                return CupertinoPageRoute(
+                  builder: (context) => RegisterPage(),  //3
+                );
+              case "/forgotPage":
+                return CupertinoPageRoute(
+                  builder: (context) => ForgotPage(),  // 3a
+                );
+              case "/vertificationPage":
+                return CupertinoPageRoute(
+                  builder: (context) => VertificationPage(),  //4
+                );
+              case "/SelectCountryPage":
+                return CupertinoPageRoute(
+                  builder: (context) => SelectCountryPage(), //5
+                );
+              case "/topicsPage":
+                return CupertinoPageRoute(
+                  builder: (context) => TopicsPage(),   //6
                 );
               case "/newsPage":
                 return CupertinoPageRoute(

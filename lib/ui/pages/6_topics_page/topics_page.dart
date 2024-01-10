@@ -51,7 +51,7 @@ class TopicsPage extends StatelessWidget {
 
             Container(
               width: 383,
-              height: 224,
+              height: MediaQuery.of(context).size.height/3,
               child:Column(
                 children: [
                   Expanded(child:Padding(padding:EdgeInsets.only(top:17,),
@@ -348,7 +348,7 @@ class TopicsPage extends StatelessWidget {
 
 
                SizedBox(
-                 height:390,
+                 height:MediaQuery.of(context).size.height/2.5,
                ),
 
 

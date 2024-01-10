@@ -41,9 +41,6 @@ class Onbording extends StatelessWidget {
             child: PageView(
             controller: pageController,
             onPageChanged: (index2){
-
-              print("index2: ${index2}");
-              //state.count=index2;
               context.read<SplashCubit>().isShowCount(index2);  // splashCubitga isShownCount funksiyasiga o'zgaruvchi pageNumber jonatilmoqda
               },
             children: [

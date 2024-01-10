@@ -14,6 +14,7 @@ class ForgotPage extends StatelessWidget {
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(
 
             ),
@@ -73,7 +74,6 @@ class ForgotPage extends StatelessWidget {
                          Center(child:  Image.asset('assets/1pageviewpage/img_3.png',width: 64,
                            height: 64,),)
                         ),
-
                         SizedBox(width:16,),
                         Expanded(
                           flex:3,
@@ -89,15 +89,8 @@ class ForgotPage extends StatelessWidget {
                               fontWeight: FontWeight.w400,),)
                           ],
                         )),
-
-
-                     Expanded(child: Image.asset('assets/1pageviewpage/img_5.png',width: 20,
+                     Expanded(child: Image.asset('assets/1pageviewpage/img_5.png',width: 20,  // ?? tugirlash kerak
                        height: 20,))
-
-
-
-
-                        
                       ],
                     ),
                   ),
@@ -116,8 +109,6 @@ class ForgotPage extends StatelessWidget {
                         SizedBox(width:5,),
                         Expanded(child:Image.asset('assets/1pageviewpage/img_4.png',width: 64,
                           height: 64,),),
-
-
                         SizedBox(width:16,),
                        Expanded(
                          flex:3,
@@ -134,19 +125,15 @@ class ForgotPage extends StatelessWidget {
                          ],
                        ),),
 
-
-                        Expanded(child:Image.asset('assets/1pageviewpage/img_5.png',width: 20,
+                        Expanded(child:Image.asset('assets/1pageviewpage/img_5.png',width: 20,   // ?? togirlash kk
                           height: 20,))
-
-
-
 
 
                       ],
                     ),
                   ),
                   SizedBox(
-                    height:260,
+                    height:MediaQuery.of(context).size.height/3.6,
                   ),
                   MaterialButton(
                     padding:EdgeInsets.zero,
@@ -157,7 +144,7 @@ class ForgotPage extends StatelessWidget {
                     pageController.jumpToPage(1);
                     },
                   child: Container(
-                    width: 380,
+                    width: MediaQuery.of(context).size.width,
                     height: 50,
                     decoration:BoxDecoration(
                         color: Colors.blue,
@@ -233,7 +220,7 @@ class ForgotPage extends StatelessWidget {
                      ),
 
                       SizedBox(
-                        height:341,
+                        height:MediaQuery.of(context).size.height/2.6,
                       ),
                       MaterialButton(
                         padding:EdgeInsets.zero,
