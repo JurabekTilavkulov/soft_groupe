@@ -69,81 +69,84 @@ class SelectCountryPage extends StatelessWidget {
       return Center(child: CircularProgressIndicator(),);
     }
     if(state.status==Status.loaded){
-      return Column(
-        children: [
-          Container(
-            width: 360,
-            height: 48,
-            child:TextField(
-              readOnly:true,
-              decoration:InputDecoration(
-                  suffixIcon:Icon(Icons.search),
-                border:OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6)
+      return Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 48,
+              child:TextField(
+                readOnly:true,
+                decoration:InputDecoration(
+                    suffixIcon:Icon(Icons.search),
+                  border:OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6)
+                  ),
+                  hintText: "Search",
                 ),
-                hintText: "Search",
               ),
             ),
-          ),
 
-          Expanded(child: ListView.builder(itemBuilder:(context,index){
-            return Padding(padding:EdgeInsets.only(left:24,top:16,right:24),
-              child:MaterialButton(onPressed:(){},
-                    shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                  child:Container(
-                    width: 380,
-                    height: 48,
-                    decoration:BoxDecoration(
-                      borderRadius: BorderRadius.circular(6)
-                    ),
-                    child:Row(children: [
-                      Image.asset('${list2[index]}',width: 32,
-                        height: 32,),
-                      SizedBox(
-                        width:16,
+            Expanded(child: ListView.builder(itemBuilder:(context,index){
+              return Padding(padding:EdgeInsets.only(left:24,top:16,right:24),
+                child:MaterialButton(onPressed:(){},
+                      shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                    child:Container(
+                       width: MediaQuery.of(context).size.width,
+                      height: 48,
+                      decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(6)
                       ),
-                      Text(
-                        '${list[index]}',
-                        style: TextStyle(
-                          color: Color(0xFF4E4B66),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
+                      child:Row(children: [
+                        Image.asset('${list2[index]}',width: 32,
+                          height: 32,),
+                        SizedBox(
+                          width:16,
                         ),
-                      )
-                    ],),
-                  ),),
-            );
+                        Text(
+                          '${list[index]}',
+                          style: TextStyle(
+                            color: Color(0xFF4E4B66),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
+                      ],),
+                    ),),
+              );
 
-          },
-            itemCount:list.length,
-          )
-          ),
-          SizedBox(
-            height:20,
-          ),
-          MaterialButton(
-            padding:EdgeInsets.zero,
-            shape:RoundedRectangleBorder(
-                borderRadius:BorderRadius.circular(6)
-            ),
-            onPressed:(){
-              Navigator.pushReplacementNamed(context, '/topicsPage');
             },
-            child: Container(
-              width: 380,
-              height: 50,
-              decoration:BoxDecoration(
-                  color: Colors.blue,
+              itemCount:list.length,
+            )
+            ),
+            SizedBox(
+              height:20,
+            ),
+            MaterialButton(
+              padding:EdgeInsets.zero,
+              shape:RoundedRectangleBorder(
                   borderRadius:BorderRadius.circular(6)
               ),
-              child:Center(child:Text('Next',style:TextStyle(color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,),),),
-            ),),
-          SizedBox(
-            height:20,
-          )
-        ],
+              onPressed:(){
+                Navigator.pushReplacementNamed(context, '/topicsPage');
+              },
+              child: Container(
+                 width: MediaQuery.of(context).size.width,
+                height: 50,
+                decoration:BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius:BorderRadius.circular(6)
+                ),
+                child:Center(child:Text('Next',style:TextStyle(color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,),),),
+              ),),
+            SizedBox(
+              height:20,
+            )
+          ],
+        ),
       ) ;
     }
 
