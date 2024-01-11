@@ -14,6 +14,7 @@ class ForgotPage extends StatelessWidget {
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             appBar: AppBar(
 
             ),

@@ -13,6 +13,7 @@ class TopicsPage extends StatelessWidget {
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
           return Scaffold(
+              resizeToAvoidBottomInset: false,
               appBar: AppBar(
 
                 centerTitle:true,
