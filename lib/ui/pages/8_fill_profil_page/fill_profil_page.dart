@@ -246,7 +246,7 @@ class FillProfilPage extends StatelessWidget {
                             )),
 
                         SizedBox(
-                          height:100,
+                          height: MediaQuery.of(context).size.height/13,
                         ),
 
                         MaterialButton(

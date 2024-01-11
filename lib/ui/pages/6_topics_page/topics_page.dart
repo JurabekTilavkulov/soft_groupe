@@ -32,6 +32,7 @@ class TopicsPage extends StatelessWidget {
     }
     if(state.status==Status.loaded){
       return Container(
+        padding: EdgeInsets.only(left: 10,right: 10),
         child: Column(
           children: [
             Container(
@@ -50,7 +51,7 @@ class TopicsPage extends StatelessWidget {
             ),
 
             Container(
-              width: 383,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height/3,
               child:Column(
                 children: [
@@ -63,7 +64,7 @@ class TopicsPage extends StatelessWidget {
                           },
                           borderRadius: BorderRadius.circular(6),
                           child:Container(
-                            width: 119,
+                            width: MediaQuery.of(context).size.width/3.2,
                             height: 50,
                             decoration:BoxDecoration(
                                color:state.select=='National'?Color(0xFF1877F2):Colors.white,
@@ -90,7 +91,7 @@ class TopicsPage extends StatelessWidget {
                             context.read<SplashCubit>().isShowSelect('International');
                           },
                           child: Container(
-                            width: 152,
+                            width: MediaQuery.of(context).size.width/2.8,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='International'?Color(0xFF1877F2):Colors.white,
@@ -117,7 +118,7 @@ class TopicsPage extends StatelessWidget {
                             context.read<SplashCubit>().isShowSelect('Sport');
                           },
                           child: Container(
-                            width: 92,
+                            width: MediaQuery.of(context).size.width/4.8,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Sport'?Color(0xFF1877F2):Colors.white,
@@ -146,7 +147,7 @@ class TopicsPage extends StatelessWidget {
                             context.read<SplashCubit>().isShowSelect('Lifestyle');
                           },
                           child: Container(
-                            width: 116,
+                            width: MediaQuery.of(context).size.width/3.2,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Lifestyle'?Color(0xFF1877F2):Colors.white,
@@ -163,7 +164,6 @@ class TopicsPage extends StatelessWidget {
                             ),),
                           ),
                         ),
-
                         SizedBox(
                           width:10,
                         ),
@@ -173,7 +173,7 @@ class TopicsPage extends StatelessWidget {
                             context.read<SplashCubit>().isShowSelect('Business');
                           },
                           child: Container(
-                            width: 121,
+                            width: MediaQuery.of(context).size.width/2.8,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Business'?Color(0xFF1877F2):Colors.white,
@@ -198,9 +198,8 @@ class TopicsPage extends StatelessWidget {
                           onTap: (){
                             context.read<SplashCubit>().isShowSelect('Health');
                           },
-
                           child: Container(
-                            width: 103,
+                            width: MediaQuery.of(context).size.width/4.8,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Health'?Color(0xFF1877F2):Colors.white,
@@ -228,7 +227,7 @@ class TopicsPage extends StatelessWidget {
                             context.read<SplashCubit>().isShowSelect('Fashion');
                           },
                           child: Container(
-                            width: 113,
+                            width: MediaQuery.of(context).size.width/3.2,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Fashion'?Color(0xFF1877F2):Colors.white,
@@ -252,7 +251,7 @@ class TopicsPage extends StatelessWidget {
                            context.read<SplashCubit>().isShowSelect('Technology');
                          },
                          child:  Container(
-                           width: 145,
+                           width: MediaQuery.of(context).size.width/2.8,
                            height: 50,
                            decoration:BoxDecoration(
                                color:state.select=='Technology'?Color(0xFF1877F2):Colors.white,
@@ -278,7 +277,7 @@ class TopicsPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(6),
                           onTap: (){ context.read<SplashCubit>().isShowSelect('Science');},
                           child: Container(
-                            width: 113,
+                            width: MediaQuery.of(context).size.width/3.2,
                             height: 50,
                             decoration:BoxDecoration(
                                 color:state.select=='Science'?Color(0xFF1877F2):Colors.white,
