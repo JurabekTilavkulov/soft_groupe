@@ -48,23 +48,15 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-
+/*The RichText widget is used to display text that uses various different styles.
+The displayed text is described using a tree of TextSpan objects, each of which
+has its own associated style that is used for that subtree. */
                 Text.rich(
                     TextSpan(
                         children:[
-                          TextSpan(
-                              text: 'Username',
-                              style: TextStyle(
-                                color: Color(0xFF4E4B66),
-                                fontSize: 14,
-                              )
+                          TextSpan(text: 'Username', style: TextStyle(color: Color(0xFF4E4B66), fontSize: 14,)
                           ),
-                          TextSpan(
-                              text: '*',
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 14,
-                              )
+                          TextSpan(text: '*', style: TextStyle(color: Colors.red, fontSize: 14,)
                           )
                         ]
                     )
@@ -72,6 +64,8 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height:4,
                 ),
+                /*It is a second TextField type. It provides a way to group multiple form fields together,
+                 perform validation on those fields, and manage their state.   */
                 Form(
                     key: _formKey1,
                     child: Column(
@@ -79,7 +73,7 @@ class LoginPage extends StatelessWidget {
                         TextFormField(
                           validator: (value){
                             if(value==null || value.isEmpty){
-                              return 'Please enter some username';
+                              return '!Please enter some username';
                             }
                             return null;
 

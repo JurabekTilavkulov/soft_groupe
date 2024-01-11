@@ -22,13 +22,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    DateTime dateTime=DateTime.now();
-    String dayTime='${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-1)<9?'0':''}${dateTime.day-1}';
+    DateTime dateTime=DateTime.now().toUtc();
+
+    String dayTime='${dateTime.year}-${dateTime.month<9?'0':''}${dateTime.month}-${(dateTime.day-2)<9?'0':''}${dateTime.day-1}';
+    String dayTimeforTesla='${dateTime.year}-${dateTime.month-1<9?'0':''}${dateTime.month-1}-${(dateTime.day-1)<9?'0':''}${dateTime.day-1}';
 
     BlocProvider.of<AllBloc>(context).add(AllLoadedEvent());
     BlocProvider.of<AppleBloc>(context).add(AppleLoadedEvent(dayTime,dayTime));
     BlocProvider.of<TechnoBloc>(context).add(TechLoadedEvent());
-    BlocProvider.of<TeslaBloc>(context).add(TeslaLoadedEvent('2023-12-09'));
+    BlocProvider.of<TeslaBloc>(context).add(TeslaLoadedEvent(dayTimeforTesla));
     
     BlocProvider.of<NewsBloc>(context).add(CountryEvent('us'));
     return BlocBuilder<NewsBloc, NewsState>(
@@ -194,12 +196,19 @@ class HomePage extends StatelessWidget {
                ),
              ),
            ),
-               bottomNavigationBar: BottomNavigationBar(
+
+           bottomNavigationBar: BottomNavigationBar(
                  onTap: (int index){
                    BlocProvider.of<SplashCubit>(context1).onChangeOnly(value1: index);// o'zgaruvchiga qiymat berilmoqda
-               print("index :${index}");
-               print("state :${state1.value1}");
-
+                   if (index == 1) {
+                     Navigator.pushNamed(context,"/ExplorePage");
+                   }
+                   if (index == 2) {
+                     Navigator.pushNamed(context, "/BookMarkPage");
+                   }
+                   if (index == 3) {
+                     Navigator.pushNamed(context, "/ProfilePage");
+                   }
                 },
                 unselectedItemColor:Colors.black,
                  showUnselectedLabels:true,

@@ -50,6 +50,7 @@ class SelectCountryPage extends StatelessWidget {
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
           return Scaffold(
+
               appBar: AppBar(
 
                 centerTitle:true,
