@@ -60,20 +60,36 @@ class HomePage extends StatelessWidget {
                          SvgPicture.asset('assets/9_home_page/qongiroq.svg'),
                        ],
                      ),//-------------------------------------------------------eng tepa birinchi qator
-                     SizedBox(height: 5),
-                     TextField(  //---------------------------------------------Ikkinchi TextField qatory
-                       decoration: InputDecoration(
-                         // prefix:SvgPicture.asset('assets/9_home_page/searche.svg'),
-                           prefixIcon: Icon(Icons.search),
-                           suffixIcon: Icon(Icons.settings),
-                           border: OutlineInputBorder(),
-                           hintText: 'searche',
-                           isDense: true
-                         //suffix: SvgPicture.asset('assets/9_home_page/balance.svg'),
+                     Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Form(
+                           // key: _formKey3,
+                           child: Column(
+                             children: [
+                               TextFormField(
+                                 validator: (value){
 
-                       ),
-                     ),//--------------------------------------------------------Ikkinchi TextField qatory
-                     SizedBox(height: 5),
+                                 },
+                                 decoration:InputDecoration(
+                                     border:OutlineInputBorder(
+                                         borderRadius: BorderRadius.circular(10)
+                                     ),
+                                   prefixIcon: Padding(
+                                     padding: const EdgeInsets.all(8.0),
+                                     child: SvgPicture.asset('assets/9_home_page/searche.svg'),
+                                   ),
+                                   suffixIcon: Padding(
+                                     padding: const EdgeInsets.all(8.0),
+                                     child: SvgPicture.asset('assets/9_home_page/balance.svg'),
+                                   ),
+                                   hintText: "Searche",
+
+                                 ),
+
+                               )
+                             ],
+                           )),
+                     ),
                      Row(//-----------------------------------------------------Uchinchi static yozuv va bitta Text button
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        children: [

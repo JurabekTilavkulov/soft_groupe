@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
+import 'package:svg_flutter/svg.dart';
 
 import '../../../data/blocs/techno_bloc/techno_bloc.dart';
 import '../../../data/blocs/tesla_bloc/tesla_bloc.dart';
@@ -21,20 +22,35 @@ class BookMarkPage extends StatelessWidget {
 
                 children: [
                   Text("Bookmark", style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),),
-                  TextField(  //---------------------------------------------Ikkinchi TextField qatory
-                    decoration: InputDecoration(
-                      // prefix:SvgPicture.asset('assets/9_home_page/searche.svg'),
-                        prefixIcon: Icon(Icons.search),
-                        suffixIcon: Icon(Icons.settings),
-                        border: OutlineInputBorder(),
-                        hintText: 'searche',
-                        isDense: true
-                      //suffix: SvgPicture.asset('assets/9_home_page/balance.svg'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Form(
+                      // key: _formKey3,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              validator: (value){
 
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
+                              },
+                              decoration:InputDecoration(
+                                border:OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10)
+                                ),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SvgPicture.asset('assets/9_home_page/searche.svg'),
+                                ),
+                                suffixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SvgPicture.asset('assets/9_home_page/balance.svg'),
+                                ),
+                                hintText: "Searche",
+
+                              ),
+
+                            )
+                          ],
+                        )),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
