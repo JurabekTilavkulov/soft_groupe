@@ -36,7 +36,7 @@ class TopicsPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 379,
+              width: MediaQuery.of(context).size.width,
               height: 48,
               child:TextField(
 
