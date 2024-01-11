@@ -36,79 +36,76 @@ class Onbording extends StatelessWidget {
       return Column(
         children: [
 
-          // Contenr bilan Row Expend qilish kerak manimcha
 
 
-          Container(
+          Expanded(
+            flex:7,
+            child:Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width*1.9,
             child: PageView(
-            controller: pageController,
-            onPageChanged: (index2){
-              context.read<SplashCubit>().isShowCount(index2);  // splashCubitga isShownCount funksiyasiga o'zgaruvchi pageNumber jonatilmoqda
+              controller: pageController,
+              onPageChanged: (index2){
+                context.read<SplashCubit>().isShowCount(index2);  // splashCubitga isShownCount funksiyasiga o'zgaruvchi pageNumber jonatilmoqda
               },
-            children: [
-              Container(                                            //  page0
-                child:Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              children: [
+                Container(                                            //  page0
+                  child:Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                    Image.asset('assets/1pageviewpage/cub.png'),
-                    Padding(padding:EdgeInsets.only(top:10,left: 24),
-                      child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
-                        fontSize: 24,fontWeight: FontWeight.w700,),),),
+                      Image.asset('assets/1pageviewpage/cub.png'),
+                      Padding(padding:EdgeInsets.only(top:10,left: 24),
+                        child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
+                          fontSize: 24,fontWeight: FontWeight.w700,),),),
 
-                    Padding(padding:EdgeInsets.only(left:24),
-                      child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
-                        style:TextStyle(color: Color(0xFF4E4B66),
-                            fontSize: 16,fontWeight: FontWeight.w400),),),
+                      Padding(padding:EdgeInsets.only(left:24),
+                        child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
+                          style:TextStyle(color: Color(0xFF4E4B66),
+                              fontSize: 16,fontWeight: FontWeight.w400),),),
 
-                  ],
-                ),
-              ),//  page0
-              Container(     //  page1
-                child:Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/1pageviewpage/img.png'),
-                    Padding(padding:EdgeInsets.only(top:24,left: 24),
-                      child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
-                        fontSize: 10,fontWeight: FontWeight.w700,),),),
+                    ],
+                  ),
+                ),//  page0
+                Container(     //  page1
+                  child:Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/1pageviewpage/img.png'),
+                      Padding(padding:EdgeInsets.only(top:24,left: 24),
+                        child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
+                          fontSize: 10,fontWeight: FontWeight.w700,),),),
 
-                    Padding(padding:EdgeInsets.only(left:24),
-                      child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
-                        style:TextStyle(color: Color(0xFF4E4B66),
-                            fontSize: 16,fontWeight: FontWeight.w400),),),
+                      Padding(padding:EdgeInsets.only(left:24),
+                        child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
+                          style:TextStyle(color: Color(0xFF4E4B66),
+                              fontSize: 16,fontWeight: FontWeight.w400),),),
 
-                  ],
-                ),
-              ),//  page1
-              Container(     //  page3
-                child:Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset('assets/1pageviewpage/bonka.png'),
-                    Padding(padding:EdgeInsets.only(top:24,left: 24),
-                      child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
-                        fontSize: 10,fontWeight: FontWeight.w700,),),),
+                    ],
+                  ),
+                ),//  page1
+                Container(     //  page3
+                  child:Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/1pageviewpage/bonka.png'),
+                      Padding(padding:EdgeInsets.only(top:24,left: 24),
+                        child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
+                          fontSize: 10,fontWeight: FontWeight.w700,),),),
 
-                    Padding(padding:EdgeInsets.only(left:24),
-                      child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
-                        style:TextStyle(color: Color(0xFF4E4B66),
-                            fontSize: 16,fontWeight: FontWeight.w400),),),
+                      Padding(padding:EdgeInsets.only(left:24),
+                        child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
+                          style:TextStyle(color: Color(0xFF4E4B66),
+                              fontSize: 16,fontWeight: FontWeight.w400),),),
 
-                  ],
-                ),
-              )  //  page3
-            ],
-          ),
-          ),
-         
-        /*Expanded(
-          flex:7,
-            child:Container())*/  //qib qoyodim
+                    ],
+                  ),
+                )  //  page3
+              ],
+            ),
+          ),),
 
-       Row(
+       Expanded(child: Row(
          mainAxisAlignment:MainAxisAlignment.start,
          children: [
 
@@ -116,72 +113,72 @@ class Onbording extends StatelessWidget {
            Container(
              width: MediaQuery.of(context).size.width*0.3,
              child:
-                DotsIndicator(
+             DotsIndicator(
 
-                   onTap: (index){
-                      // state.count=index;
-                       pageController.jumpToPage(index);
-                   },
-                  decorator: DotsDecorator(
-                    activeColor: Colors.blue,
-                  ),
-                  dotsCount:3,
-                  position:state.count,
+               onTap: (index){
+                 // state.count=index;
+                 pageController.jumpToPage(index);
+               },
+               decorator: DotsDecorator(
+                 activeColor: Colors.blue,
+               ),
+               dotsCount:3,
+               position:state.count,
 
 
-              ),),
+             ),),
 
            Container(
              padding: EdgeInsets.only(right: 10),
              width: MediaQuery.of(context).size.width*0.7,
              child: Row(
-             mainAxisAlignment:MainAxisAlignment.end,
-             children: [
-               if(state.count==1 || state.count==2)
-                 TextButton(onPressed:(){pageController.jumpToPage(state.count-1);},child:
-                 Text('Back',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xFFB0B3B8),),)),
-               if(state.count==1 || state.count==0)
-                 InkWell(
-                   borderRadius: BorderRadius.circular(6),
-                   onTap: (){
-                     pageController.nextPage(duration:Duration(milliseconds:5), curve:Curves.ease);
-                   },
-                   child: Container(
-                     width: 85,
-                     height: 50,
-                     decoration: BoxDecoration(
-                         color: Colors.blue,
-                         borderRadius: BorderRadius.circular(6)
-                     ),
-                     child: Center(
-                       child: Text('Next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 16),),
+               mainAxisAlignment:MainAxisAlignment.end,
+               children: [
+                 if(state.count==1 || state.count==2)
+                   TextButton(onPressed:(){pageController.jumpToPage(state.count-1);},child:
+                   Text('Back',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Color(0xFFB0B3B8),),)),
+                 if(state.count==1 || state.count==0)
+                   InkWell(
+                     borderRadius: BorderRadius.circular(6),
+                     onTap: (){
+                       pageController.nextPage(duration:Duration(milliseconds:5), curve:Curves.ease);
+                     },
+                     child: Container(
+                       width: 85,
+                       height: 50,
+                       decoration: BoxDecoration(
+                           color: Colors.blue,
+                           borderRadius: BorderRadius.circular(6)
+                       ),
+                       child: Center(
+                         child: Text('Next',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600,fontSize: 16),),
+                       ),
                      ),
                    ),
-                 ),
 
-               if(state.count==2)
-                 InkWell(
-                   borderRadius: BorderRadius.circular(6),
-                   onTap: (){
-                     Navigator.pushReplacementNamed(context, '/loginPage');
-                   },
-                   child:Container(
-                     width: 142,
-                     height: 50,
-                     decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(6),
-                         color: Colors.blue
-                     ),
-                     child: Center(
-                       child: Text("Get Started",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),),
-                     ),
-                   ) ,),
-             ],
-           ),)
+                 if(state.count==2)
+                   InkWell(
+                     borderRadius: BorderRadius.circular(6),
+                     onTap: (){
+                       Navigator.pushReplacementNamed(context, '/loginPage');
+                     },
+                     child:Container(
+                       width: 142,
+                       height: 50,
+                       decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(6),
+                           color: Colors.blue
+                       ),
+                       child: Center(
+                         child: Text("Get Started",style: TextStyle(color: Colors.white,fontWeight: FontWeight.w600),),
+                       ),
+                     ) ,),
+               ],
+             ),)
 
 
          ],
-       )
+       ))
         ],
       );
     }

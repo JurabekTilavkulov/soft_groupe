@@ -30,7 +30,7 @@ class SplashCubit extends Cubit<SplashState>{
 
     emit(state.copyWith(status:Status.loding));  //state ning copyWith funksiyasi orqali state ga Loading qiymat beriladi
 
-    await Future.delayed(Duration(seconds:5),(){
+    await Future.delayed(Duration(seconds:3),(){
       emit(state.copyWith(status:Status.loaded));
       // State ning copyWith funk orqali yana state ga Loaded degan qiymat berildi
      });
