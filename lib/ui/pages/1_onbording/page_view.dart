@@ -35,6 +35,10 @@ class Onbording extends StatelessWidget {
       print('state.count: ${state.count}');
       return Column(
         children: [
+
+          // Contenr bilan Row Expend qilish kerak manimcha
+
+
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.width*1.9,
