@@ -39,29 +39,28 @@ class ForgotPage extends StatelessWidget {
               child:Column(
                 children: [
                   Container(
-                    height:200,
-                    width:379,
-                    // color: Colors.blue,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Forgot\nPassword ?',style: TextStyle(color: Color(0xFF4E4B66),
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,),),
-                        Text('Don’t worry! it happens. Please select the\nemail or number associated with your\naccount.',style: TextStyle(color: Color(0xFF4E4B66),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,),),
-                      ],
-                    ),
-                  ),
+                   height:200,
+                   width:379,
 
-                  SizedBox(
-                    height:16,
-                  ),
+                   // color: Colors.blue,
+                   child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
+                     children: [
+                       Text('Forgot\nPassword ?',style: TextStyle(color: Color(0xFF4E4B66),
+                         fontSize: 32,
+                         fontWeight: FontWeight.w700,),),
+                       Text('Don’t worry! it happens. Please select the\nemail or number associated with your\naccount.',style: TextStyle(color: Color(0xFF4E4B66),
+                         fontSize: 16,
+                         fontWeight: FontWeight.w400,),),
+                     ],
+                   ),
+                 ),
 
-                  Container(
-                    width: 383,
-                    height:80,
+
+
+                  Expanded(child: Container(
+
+                    margin: EdgeInsets.only(top:40,bottom:40),
                     decoration:BoxDecoration(
                         color:  Color(0xFFEEF1F4),
                         borderRadius: BorderRadius.circular(6)
@@ -70,43 +69,40 @@ class ForgotPage extends StatelessWidget {
                       children: [
                         SizedBox(width:5,),
                         Expanded(child:
-                         Center(child:  Image.asset('assets/1pageviewpage/img_3.png',width: 64,
-                           height: 64,),)
+                        Center(child:  Image.asset('assets/1pageviewpage/img_3.png',width: 64,
+                          height: 64,),)
                         ),
 
                         SizedBox(width:16,),
                         Expanded(
-                          flex:3,
+                            flex:3,
                             child:Column(
-                          crossAxisAlignment:CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('via Email:',style: TextStyle(color: Color(0xFF667080),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,),),
-                            Text('example@youremail.com',style:TextStyle(color: Color(0xFF050505),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,),)
-                          ],
-                        )),
+                              crossAxisAlignment:CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('via Email:',style: TextStyle(color: Color(0xFF667080),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,),),
+                                Text('example@youremail.com',style:TextStyle(color: Color(0xFF050505),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,),)
+                              ],
+                            )),
 
 
-                     Expanded(child: Image.asset('assets/1pageviewpage/img_5.png',width: 20,
-                       height: 20,))
+                        Expanded(child: Image.asset('assets/1pageviewpage/img_5.png',width: 20,
+                          height: 20,))
 
 
 
 
-                        
+
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height:16,
-                  ),
-                  Container(
-                    width: 383,
-                    height:80,
+                  ),),
+
+                  Expanded(child:Container(
+                    margin: EdgeInsets.only(bottom:80),
                     decoration:BoxDecoration(
                         color:  Color(0xFFEEF1F4),
                         borderRadius: BorderRadius.circular(6)
@@ -119,20 +115,20 @@ class ForgotPage extends StatelessWidget {
 
 
                         SizedBox(width:16,),
-                       Expanded(
-                         flex:3,
-                         child:Column(
-                         crossAxisAlignment:CrossAxisAlignment.start,
-                         mainAxisAlignment: MainAxisAlignment.center,
-                         children: [
-                           Text('via Email:',style: TextStyle(color: Color(0xFF667080),
-                             fontSize: 14,
-                             fontWeight: FontWeight.w400,),),
-                           Text('+62-8421-4512-2531',style:TextStyle(color: Color(0xFF050505),
-                             fontSize: 16,
-                             fontWeight: FontWeight.w400,),)
-                         ],
-                       ),),
+                        Expanded(
+                          flex:3,
+                          child:Column(
+                            crossAxisAlignment:CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('via Email:',style: TextStyle(color: Color(0xFF667080),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,),),
+                              Text('+62-8421-4512-2531',style:TextStyle(color: Color(0xFF050505),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,),)
+                            ],
+                          ),),
 
 
                         Expanded(child:Image.asset('assets/1pageviewpage/img_5.png',width: 20,
@@ -144,29 +140,30 @@ class ForgotPage extends StatelessWidget {
 
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height:260,
-                  ),
-                  MaterialButton(
-                    padding:EdgeInsets.zero,
-                    shape:RoundedRectangleBorder(
-                      borderRadius:BorderRadius.circular(6)
-                    ),
-                    onPressed:(){
-                    pageController.jumpToPage(1);
-                    },
-                  child: Container(
-                    width: 380,
-                    height: 50,
-                    decoration:BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius:BorderRadius.circular(6)
-                    ),
-                    child:Center(child:Text('Submit',style:TextStyle(color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,),),),
-                  ),)
+                  )),
+
+                  Expanded(child:Container(
+                    margin:EdgeInsets.only(top:80,bottom:10),
+                    child: MaterialButton(
+                      padding:EdgeInsets.zero,
+                      shape:RoundedRectangleBorder(
+                          borderRadius:BorderRadius.circular(6)
+                      ),
+                      onPressed:(){
+                        pageController.jumpToPage(1);
+                      },
+                      child: Container(
+                        width: 380,
+                        height: 50,
+                        decoration:BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius:BorderRadius.circular(6)
+                        ),
+                        child:Center(child:Text('Submit',style:TextStyle(color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,),),),
+                      ),),
+                  ))
                 ],
               ),
             ),
@@ -204,6 +201,7 @@ class ForgotPage extends StatelessWidget {
                              child: Column(
                                children: [
                                  TextFormField(
+
                                    validator: (value){
                                      if(value==null || value.isEmpty){
                                        return 'Please enter some password';
@@ -211,6 +209,7 @@ class ForgotPage extends StatelessWidget {
                                      return null;
 
                                    },
+
                                    obscureText:state.isEyeShow ?? false,
                                    decoration:InputDecoration(
                                        hintText: 'Password',
