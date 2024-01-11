@@ -104,7 +104,9 @@ class Onbording extends StatelessWidget {
           ),
           ),
          
-
+        /*Expanded(
+          flex:7,
+            child:Container())*/  //qib qoyodim
 
        Row(
          mainAxisAlignment:MainAxisAlignment.start,
