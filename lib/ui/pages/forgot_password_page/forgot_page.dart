@@ -147,7 +147,7 @@ class ForgotPage extends StatelessWidget {
                   ),
 
                   SizedBox(
-                   height: MediaQuery.of(context).size.height/3,
+                   height: MediaQuery.of(context).size.height/3.4,
                   ),
                   MaterialButton(
                     padding:EdgeInsets.zero,
@@ -234,7 +234,7 @@ class ForgotPage extends StatelessWidget {
                      ),
 
                       SizedBox(
-                        height:341,
+                        height:MediaQuery.of(context).size.height/2.6,
                       ),
                       MaterialButton(
                         padding:EdgeInsets.zero,

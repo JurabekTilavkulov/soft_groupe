@@ -72,7 +72,7 @@ class SelectCountryPage extends StatelessWidget {
       return Column(
         children: [
           Container(
-            width: 379,
+            width: 360,
             height: 48,
             child:TextField(
               readOnly:true,
@@ -82,7 +82,6 @@ class SelectCountryPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6)
                 ),
                 hintText: "Search",
-
               ),
             ),
           ),
