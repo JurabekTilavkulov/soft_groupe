@@ -200,7 +200,7 @@ class HomePage extends StatelessWidget {
                        ),
                      ),
                      Container(
-                       width: 360,
+                       width:MediaQuery.of(context).size.width,
                       height: 400,
                       // width: MediaQuery.of(context).size.width,
                        child: TabBarView(

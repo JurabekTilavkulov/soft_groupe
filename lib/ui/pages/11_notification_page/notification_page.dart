@@ -39,7 +39,7 @@ class NotificationPage extends StatelessWidget {
                       return [
                         PopupMenuItem<int>(
                           value: 0,
-                          child: Text("My Account"),
+                          child: Text("Profile"),
                         ),
 
                         PopupMenuItem<int>(
@@ -55,11 +55,11 @@ class NotificationPage extends StatelessWidget {
                     },
                     onSelected: (value) {
                       if (value == 0) {
-                        print("My account menu is selected.");
+                        Navigator.pushNamed(context, "/ProfilePage");
                       } else if (value == 1) {
-                        print("Settings menu is selected.");
+                        Navigator.pushNamed(context, "/SettingsPage");
                       } else if (value == 2) {
-                        print("Logout menu is selected.");
+                        Navigator.pushNamed(context, "/loginPage");
                       }
                     }
                 ),
