@@ -37,12 +37,20 @@ class BookMarkPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10)
                                 ),
                                 prefixIcon: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: SvgPicture.asset('assets/9_home_page/searche.svg'),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(onPressed: () {
+                                      Navigator.pushNamed(context, "/SearchePage");
+                                    },
+                                        icon: SvgPicture.asset('assets/9_home_page/searche.svg'))
+
                                 ),
                                 suffixIcon: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: SvgPicture.asset('assets/9_home_page/balance.svg'),
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: IconButton(onPressed: () {
+                                      Navigator.pushNamed(context, "/SettingsPage");
+                                    },
+                                        icon: SvgPicture.asset('assets/9_home_page/balance.svg'))
+
                                 ),
                                 hintText: "Searche",
 

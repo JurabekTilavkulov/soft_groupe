@@ -9,10 +9,12 @@ import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
 import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
 import 'package:soft_groupe/ui/pages/10_trending_page/trending_page.dart';
 import 'package:soft_groupe/ui/pages/11_notification_page/notification_page.dart';
+import 'package:soft_groupe/ui/pages/12_searche_page/searche_page.dart';
 import 'package:soft_groupe/ui/pages/13_author_profile_page/author_profile_page.dart';
 import 'package:soft_groupe/ui/pages/14_explore_page/explore_page.dart';
 import 'package:soft_groupe/ui/pages/15_book_mark_page/book_mark_page.dart';
 import 'package:soft_groupe/ui/pages/16_detail_screen_news_page/detail_screen_page.dart';
+import 'package:soft_groupe/ui/pages/19_detail_screen_settings_page/detail_screen_settings_page.dart';
 import 'package:soft_groupe/ui/pages/1_onbording/page_view.dart';
 import 'package:soft_groupe/ui/pages/2_login_page/login_page.dart';
 import 'package:soft_groupe/ui/pages/3_register_page/register_page.dart';
@@ -170,6 +172,14 @@ class MyApp extends StatelessWidget {
               case "/TrendingPage":
                 return CupertinoPageRoute(
                   builder: (context) => TrendingPage(),  //13
+                );
+              case "/SearchePage":
+                return CupertinoPageRoute(
+                  builder: (context) => SearchePage(),  //13
+                );
+              case "/SettingsPage":
+                return CupertinoPageRoute(
+                  builder: (context) => SettingsPage(),  //13
                 );
                 
             }
