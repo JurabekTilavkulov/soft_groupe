@@ -57,7 +57,12 @@ class HomePage extends StatelessWidget {
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                        children: [
                          SvgPicture.asset('assets/9_home_page/bosh.svg'),
-                         SvgPicture.asset('assets/9_home_page/qongiroq.svg'),
+                         InkWell(onTap: (){
+                             Navigator.pushNamed(context, "/NotificationPage");
+                           },
+                          child:SvgPicture.asset('assets/9_home_page/qongiroq.svg'),
+                         )
+
                        ],
                      ),//-------------------------------------------------------eng tepa birinchi qator
                      Padding(
