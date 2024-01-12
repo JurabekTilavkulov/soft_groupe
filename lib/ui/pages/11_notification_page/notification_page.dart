@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/blocs/apple_bloc/apple_bloc.dart';
+import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/data/model/model_news.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,7 +18,9 @@ class NotificationPage extends StatelessWidget {
         else if(state is AppleSuccsesState){
           state.modelNews.articles?.removeWhere((element) => element.urlToImage==null);
 
-          return Scaffold(
+          return BlocBuilder<SplashCubit, SplashState>(
+  builder: (context1, state1) {
+    return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
@@ -71,8 +74,35 @@ class NotificationPage extends StatelessWidget {
                 },
                 )
             ),
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: (int index){
+                BlocProvider.of<SplashCubit>(context).onChangeOnly(value1: index);// o'zgaruvchiga qiymat berilmoqda
+                if (index == 1) {
+                  Navigator.pushNamed(context,"/ExplorePage");
+                }
+                if (index == 2) {
+                  Navigator.pushNamed(context, "/BookMarkPage");
+                }
+                if (index == 3) {
+                  Navigator.pushNamed(context, "/ProfilePage");
+                }
+              },
+              unselectedItemColor:Colors.black,
+              showUnselectedLabels:true,
+              selectedItemColor:Colors.blue,
+              currentIndex: state1.value1!,  // o'zgaruvchidan qiymat olinmoqda
+
+              items: const[
+                BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+                BottomNavigationBarItem(icon: Icon(Icons.explore),label: "Explore"),
+                BottomNavigationBarItem(icon: Icon(Icons.bookmark),label: "Bookmark"),
+                BottomNavigationBarItem(icon: Icon(Icons.portrait_rounded),label: "Profile"),
+              ],
+            ),
 
           );
+  },
+);
         }
         else if(state is AppleFailureState)
           return Scaffold(body: Center(child: Text("Error"),),);

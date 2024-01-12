@@ -71,7 +71,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=57d556b41e0a40169cbecea58e562d76',
+              '/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=d4bb802cd5434447a51f0477f58e5e22',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -98,7 +98,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=57d556b41e0a40169cbecea58e562d76',
+              '/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=d4bb802cd5434447a51f0477f58e5e22',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -125,7 +125,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/top-headlines?{country}&category=business&apiKey=57d556b41e0a40169cbecea58e562d76',
+              '/top-headlines?{country}&category=business&apiKey=d4bb802cd5434447a51f0477f58e5e22',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -152,7 +152,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/top-headlines?sources=techcrunch&apiKey=57d556b41e0a40169cbecea58e562d76',
+              '/top-headlines?sources=techcrunch&apiKey=d4bb802cd5434447a51f0477f58e5e22',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -179,7 +179,7 @@ class _NetWorkService implements NetWorkService {
     )
             .compose(
               _dio.options,
-              '/everything?domains=wsj.com&apiKey=57d556b41e0a40169cbecea58e562d76',
+              '/everything?domains=wsj.com&apiKey=d4bb802cd5434447a51f0477f58e5e22',
               queryParameters: queryParameters,
               data: _data,
             )

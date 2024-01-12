@@ -7,6 +7,7 @@ import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:soft_groupe/data/model/model_news.dart';
 import 'package:soft_groupe/data/service/NetServiceUsingRetrofit.dart';
 import 'package:soft_groupe/ui/pages/0_splash_page/splash_page.dart';
+import 'package:soft_groupe/ui/pages/10_trending_page/trending_page.dart';
 import 'package:soft_groupe/ui/pages/11_notification_page/notification_page.dart';
 import 'package:soft_groupe/ui/pages/13_author_profile_page/author_profile_page.dart';
 import 'package:soft_groupe/ui/pages/14_explore_page/explore_page.dart';
@@ -165,6 +166,10 @@ class MyApp extends StatelessWidget {
               case "/NotificationPage":
                 return CupertinoPageRoute(
                   builder: (context) => NotificationPage(),  //13
+                );
+              case "/TrendingPage":
+                return CupertinoPageRoute(
+                  builder: (context) => TrendingPage(),  //13
                 );
                 
             }

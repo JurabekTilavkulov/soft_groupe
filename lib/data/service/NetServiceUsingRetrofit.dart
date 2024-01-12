@@ -21,26 +21,26 @@ abstract class NetWorkService{
       );
 
 
-  @GET('/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=57d556b41e0a40169cbecea58e562d76')
+  @GET('/everything?q=apple&{from}&{to}&sortBy=popularity&apiKey=d4bb802cd5434447a51f0477f58e5e22')
   Future<ModelNews> appleNews(
       @Query('from') String from,
       @Query('to') String to,
       );
 //
 
-  @GET('/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=57d556b41e0a40169cbecea58e562d76')
+  @GET('/everything?q=tesla&{from}&sortBy=publishedAt&apiKey=d4bb802cd5434447a51f0477f58e5e22')
   Future<ModelNews> teslaNews(
       @Query('from') String from,
       );
 
-  @GET('/top-headlines?{country}&category=business&apiKey=57d556b41e0a40169cbecea58e562d76')
+  @GET('/top-headlines?{country}&category=business&apiKey=d4bb802cd5434447a51f0477f58e5e22')
   Future<ModelNews> countryNews(
       @Query('country') String country,
       );
 
-  @GET('/top-headlines?sources=techcrunch&apiKey=57d556b41e0a40169cbecea58e562d76')
+  @GET('/top-headlines?sources=techcrunch&apiKey=d4bb802cd5434447a51f0477f58e5e22')
   Future<ModelNews> techcrunchNews();
 
-  @GET('/everything?domains=wsj.com&apiKey=57d556b41e0a40169cbecea58e562d76')
+  @GET('/everything?domains=wsj.com&apiKey=d4bb802cd5434447a51f0477f58e5e22')
   Future<ModelNews> allNews();
 }

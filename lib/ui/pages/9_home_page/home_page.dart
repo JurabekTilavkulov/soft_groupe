@@ -100,8 +100,8 @@ class HomePage extends StatelessWidget {
                        children: [
                          Text('Trending',style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,letterSpacing: 1),),
                          /// ---------------------------------------------------------------------------problem bosganda boshqa page ga otish kk
-                         TextButton(onPressed: ()async{
-                           await launchUrl(Uri.parse('${state.data.articles?[0].url}'));
+                         TextButton(onPressed: (){
+                           Navigator.pushNamed(context, "/TrendingPage");
                          }, child:Text('See all',style: TextStyle(fontSize: 18,color: Colors.black45)))
 
 
