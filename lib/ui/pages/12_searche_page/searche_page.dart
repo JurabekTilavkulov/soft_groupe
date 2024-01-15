@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/blocs/all_bloc/all_bloc.dart';
 import 'package:soft_groupe/data/blocs/news_bloc/news_bloc.dart';
+import 'package:soft_groupe/data/blocs/tesla_bloc/tesla_bloc.dart';
+import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../data/model/searcheModel.dart';
@@ -91,15 +93,20 @@ class SearchePage extends StatelessWidget {
                             child: buildBodyA(stateA),
                           );
                           },
-                      ),
-                      Container(),
+                      ),// News page
+                      BlocBuilder<TeslaBloc, TeslaState>(
+                        builder: (contextT, stateT) {
+                          return Container(
+                            child: buildBodyT(stateT),);
+                          },
+                      ),       // Topics page
                       Container(  height: MediaQuery.of(context).size.width*0.4,
 
                         child: ListView.builder(
                           itemCount: 7,
                           itemBuilder: (context, index) {
                             return buildBodyN(context, index);
-                          },),)
+                          },),)       //Auther page
                     ]),
                   ),
                 )
@@ -192,5 +199,93 @@ class SearchePage extends StatelessWidget {
        );
      }
      else return Center(child: Text('error'),);
+   }
+   Widget buildBodyT(TeslaState state) {
+     if (state is TeslaSuccestate) {
+       state.data.articles?.removeWhere((element) =>
+       element.urlToImage == null);
+       return ListView.builder(
+           itemCount: state.data.articles?.length,
+           itemBuilder: (BuildContext context, int index) {
+             return BlocBuilder<SplashCubit, SplashState>(
+               builder: (contextS, stateS) {
+                 return GestureDetector(
+                 onTap: () {
+                   print('index :${index}');
+                   print('runTimeType :${state.data.articles?[index]
+                       .runtimeType}');
+                   Navigator.pushNamed(context, '/DatailScreenNewsPage',
+                       arguments: state.data.articles?[index]);
+                 },
+                 child: Container(
+                     height: 140,
+                     child: Row(children: [
+                       Container(
+                         height: 120,
+                         width: 140,
+                         decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(10),
+                             image: DecorationImage(
+                               image: NetworkImage("${state.data.articles?[index].urlToImage}"),
+                               fit: BoxFit.fill,
+                             )
+                         ),
+                       ),
+                       Expanded(
+                         child: Padding(
+                           padding: const EdgeInsets.only(left: 4.0, top: 10),
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text('${state.data.articles?[index].title}',
+                                 style: TextStyle(
+                                     fontSize: 14, fontWeight: FontWeight.bold),
+                                 overflow: TextOverflow.ellipsis,),
+                               Column(
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: [
+                                   Text(
+                                     '${state.data.articles?[index].source
+                                         ?.name}', style: TextStyle(fontSize: 14,
+                                       color: Colors.black45,
+                                       fontWeight: FontWeight.bold),
+                                     overflow: TextOverflow.ellipsis,),
+                                   Text('${state.data.articles?[index]
+                                       .publishedAt}',
+                                     overflow: TextOverflow.ellipsis,)
+                                 ],)
+                             ],),
+                         ),
+                       ),
+                       MaterialButton(onPressed: () {
+                         BlocProvider.of<SplashCubit>(context).isShowChekbox(true);
+                         print('stateS= ${stateS.chekBox}');
+                       },
+                         child: Container(
+                           width: MediaQuery.of(context).size.width / 6,
+                           height: MediaQuery.of(context).size.width / 12,
+
+                           decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(5),
+                               color:stateS==true ? Colors.white: Colors.blue,
+                             border:stateS==true? Border.all(color: Colors.blue):null
+                           ),
+                           child: Center(child: Text("Saved", style: TextStyle(
+                               color: Colors.white),)),
+                         ),
+                       )
+                     ])));
+                 },
+             );
+           });
+     }
+     else if (state is AllInitialState) {
+       return Center(child: CircularProgressIndicator(),);
+     }
+     else if (state is AllFailureState) {
+       return Center(child: Text("Failure"),);
+     }
+     else
+       return Center(child: Text('No Data'),);
    }
 }
