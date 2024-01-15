@@ -16,5 +16,32 @@ class HiveRepository {
     return hive.get("name", defaultValue:'');
   }
 
+  saveUserName(String userName){
+    hive.put('userName',userName);
+  }
+
+
+  String getUserName() {
+    return hive.get("userName", defaultValue:'');
+  }
+
+  saveEmail(String email){
+    hive.put('email',email);
+  }
+
+
+  String getEmail() {
+    return hive.get("email", defaultValue:'');
+  }
+
+  savePhoneNumber(String phoneNumber){
+    hive.put('phoneNumber',phoneNumber);
+  }
+
+
+  String getPhoneNumber() {
+    return hive.get("phoneNumber", defaultValue:'');
+  }
+
 
 }

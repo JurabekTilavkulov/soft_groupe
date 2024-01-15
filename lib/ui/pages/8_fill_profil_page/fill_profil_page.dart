@@ -19,10 +19,16 @@ class FillProfilPage extends StatelessWidget {
    HiveRepository hiveRepository=HiveRepository();
 
    String hiveName='';
+   String hiveUserName='';
+   String hiveEmail='';
+   String hivePhoneNumber='';
 
   @override
   Widget build(BuildContext context) {
     hiveName=hiveRepository.getName();
+    hiveUserName=hiveRepository.getUserName();
+    hiveEmail=hiveRepository.getEmail();
+    hivePhoneNumber=hiveRepository.getPhoneNumber();
     return BlocBuilder<SplashCubit,SplashState>(
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
@@ -272,7 +278,13 @@ class FillProfilPage extends StatelessWidget {
                             && _formKey3.currentState!.validate() && _formKey4.currentState!.validate() ) {
                               Navigator.pushReplacementNamed(context,'/HomePage');
                              hiveName=name.text;
+                             hiveUserName=username.text;
+                             hiveEmail=email.text;
+                             hivePhoneNumber=phoneNumber.text;
                              hiveRepository.saveName(hiveName);
+                             hiveRepository.saveUserName(hiveUserName);
+                             hiveRepository.saveEmail(hiveEmail);
+                             hiveRepository.savePhoneNumber(hivePhoneNumber);
                             }
 
                           },
