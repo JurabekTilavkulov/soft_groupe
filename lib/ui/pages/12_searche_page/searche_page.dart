@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:soft_groupe/data/blocs/all_bloc/all_bloc.dart';
+import 'package:soft_groupe/data/blocs/news_bloc/news_bloc.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../data/model/searcheModel.dart';
@@ -51,7 +54,7 @@ class SearchePage extends StatelessWidget {
                             suffixIcon: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: IconButton(onPressed: () {
-
+                                  Navigator.pop(context);
                                 },
                                     icon: SvgPicture.asset('assets/16_detail_screen_news_page/reject.svg'))
 
@@ -80,7 +83,14 @@ class SearchePage extends StatelessWidget {
                     height: MediaQuery.of(context).size.height*0.72,
 
                     child: TabBarView(children: [
-                      Container(
+                      BlocBuilder<AllBloc, AllState>(
+  
+                        builder: (contextA, stateA) {
+                          
+                          return Container(
+                            child: buildBodyA(stateA),
+                          );
+                          },
                       ),
                       Container(),
                       Container(  height: MediaQuery.of(context).size.width*0.4,
@@ -128,4 +138,59 @@ class SearchePage extends StatelessWidget {
       ],),
     );
   }
+  Widget buildBodyA(AllState state){
+
+     if(state is AllSuccsesState){
+       state.modelNews.articles?.removeWhere((element) => element.urlToImage==null);
+
+       return ListView.builder(
+           itemCount:state.modelNews.articles?.length??0,
+           itemBuilder: (BuildContext context, int index) {
+             return GestureDetector(onTap: () {
+               Navigator.pushNamed(context, '/DatailScreenNewsPage',
+                   arguments: state.modelNews.articles?[index]);
+             },
+             child: Container(
+                 height: 140,
+                 child: Row(children: [
+                   Container(
+                     height: 120,
+                     width: 140,
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(10),
+                         image: DecorationImage(
+                           image: NetworkImage("${state.modelNews.articles?[index].urlToImage}"),
+                           fit: BoxFit.fill,
+                         )
+                     ),
+                   ),
+                   Expanded(
+                     child: Padding(
+                       padding: const EdgeInsets.all(8.0),
+                       child: Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           Text('${state.modelNews.articles?[index].title}',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),overflow:TextOverflow.ellipsis,),
+                           Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text('${state.modelNews.articles?[index].source?.name}',style: TextStyle(fontSize: 14,color: Colors.black45,fontWeight: FontWeight.bold),overflow:TextOverflow.ellipsis,),
+                               Text('${state.modelNews.articles?[index].publishedAt}',overflow:TextOverflow.ellipsis,)
+                             ],)
+                         ],),
+                     ),
+                   )
+                 ],)
+             ) );
+
+
+           });
+     }
+     else if(state is AllInitialState){
+       return Container(
+         child: SafeArea(child: Center(child: CircularProgressIndicator()),),
+       );
+     }
+     else return Center(child: Text('error'),);
+   }
 }
