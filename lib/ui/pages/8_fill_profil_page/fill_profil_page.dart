@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
+import 'package:soft_groupe/hive/hive.dart';
 
 class FillProfilPage extends StatelessWidget {
    FillProfilPage({super.key});
@@ -9,8 +10,19 @@ class FillProfilPage extends StatelessWidget {
   final _formKey2 = GlobalKey<FormState>();
   final _formKey3 = GlobalKey<FormState>();
   final _formKey4 = GlobalKey<FormState>();
+
+  TextEditingController username=TextEditingController();
+  TextEditingController name=TextEditingController();
+  TextEditingController email=TextEditingController();
+  TextEditingController phoneNumber=TextEditingController();
+
+   HiveRepository hiveRepository=HiveRepository();
+
+   String hiveName='';
+
   @override
   Widget build(BuildContext context) {
+    hiveName=hiveRepository.getName();
     return BlocBuilder<SplashCubit,SplashState>(
         bloc: context.read<SplashCubit>()..onbording(),
         builder:(context,state){
@@ -85,6 +97,7 @@ class FillProfilPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  controller:username,
                                   validator: (value){
                                     if(value==null || value.isEmpty){
                                       return 'Please enter some username';
@@ -132,6 +145,7 @@ class FillProfilPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  controller:name,
                                   validator: (value){
                                     if(value==null || value.isEmpty){
                                       return 'Please enter some Full Name';
@@ -180,6 +194,7 @@ class FillProfilPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  controller:email,
                                   validator: (value){
                                     if(value==null || value.isEmpty){
                                       return 'Please enter some Email Address';
@@ -228,6 +243,7 @@ class FillProfilPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  controller:phoneNumber,
                                   validator: (value){
                                     if(value==null || value.isEmpty){
                                       return 'Please enter some Phone Number';
@@ -255,7 +271,10 @@ class FillProfilPage extends StatelessWidget {
                             if (_formKey1.currentState!.validate() && _formKey2.currentState!.validate()
                             && _formKey3.currentState!.validate() && _formKey4.currentState!.validate() ) {
                               Navigator.pushReplacementNamed(context,'/HomePage');
+                             hiveName=name.text;
+                             hiveRepository.saveName(hiveName);
                             }
+
                           },
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(

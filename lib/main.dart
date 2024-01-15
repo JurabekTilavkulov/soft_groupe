@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:soft_groupe/data/blocs/all_bloc/all_bloc.dart';
 import 'package:soft_groupe/data/blocs/apple_bloc/apple_bloc.dart';
 import 'package:soft_groupe/data/cubits/splash_cubit/splash_cubit.dart';
@@ -34,7 +35,10 @@ import 'data/blocs/news_bloc/news_bloc.dart';
 import 'data/blocs/techno_bloc/techno_bloc.dart';
 import 'data/blocs/tesla_bloc/tesla_bloc.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('profil');
   runApp(const MyApp());
 }
 

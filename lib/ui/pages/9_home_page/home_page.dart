@@ -186,7 +186,6 @@ class HomePage extends StatelessWidget {
                          //indicatorWeight: 10,
                          indicatorWeight: 1,
                          onTap: (index){
-
                            print("index funksiya ichi${index}");
                          },
                          tabAlignment:  TabAlignment.start,

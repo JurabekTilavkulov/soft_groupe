@@ -74,7 +74,7 @@ class Onbording extends StatelessWidget {
                       Image.asset('assets/1pageviewpage/img.png'),
                       Padding(padding:EdgeInsets.only(top:24,left: 24),
                         child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
-                          fontSize: 10,fontWeight: FontWeight.w700,),),),
+                          fontSize: 24,fontWeight: FontWeight.w700,),),),
 
                       Padding(padding:EdgeInsets.only(left:24),
                         child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
@@ -91,7 +91,7 @@ class Onbording extends StatelessWidget {
                       Image.asset('assets/1pageviewpage/bonka.png'),
                       Padding(padding:EdgeInsets.only(top:24,left: 24),
                         child:Text('Lorem Ipsum is simply\ndummy',style:TextStyle(color: Colors.black,
-                          fontSize: 10,fontWeight: FontWeight.w700,),),),
+                            fontSize: 24,fontWeight: FontWeight.w700,),),),
 
                       Padding(padding:EdgeInsets.only(left:24),
                         child:Text('Lorem Ipsum is simply dummy text of\nthe printing and typesetting industry.',
