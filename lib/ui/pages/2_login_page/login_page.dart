@@ -150,7 +150,8 @@ has its own associated style that is used for that subtree. */
                   children: [
                   Expanded(child:Container(
                     padding: EdgeInsets.zero,
-                    child: Checkbox(value:state.chekBox??false,
+                    child: Checkbox(
+                        value:state.chekBox??false,
                         activeColor: Colors.blue,
                         tristate: true,
                         onChanged:(d){
